@@ -1,0 +1,252 @@
+/* Estilos generales y variables */
+:root {
+  --primary-color: #2c3e50;
+  --accent-color: #f1c40f;
+  --text-color: #ecf0f1;
+  --hover-color: #e67e22;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --transition-speed: 0.3s;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+}
+
+/* Estilo mejorado del nav */
+nav {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 15px 30px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--accent-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: padding var(--transition-speed) ease;
+}
+
+/* Efecto scroll - se reduce al hacer scroll */
+nav.scrolled {
+  padding: 8px 30px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* Logo del kiosco con animación */
+nav .logo {
+  font-family: 'Poppins', 'Roboto', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+}
+
+nav .logo span {
+  color: var(--accent-color);
+  font-size: 2.2rem;
+  margin-right: 12px;
+  transition: transform var(--transition-speed) ease;
+}
+
+nav .logo:hover span {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Estilos para quitar el subrayado y asegurar que sea blanco */
+.no-underline {
+  text-decoration: none !important;
+}
+
+.text-white {
+  color: white !important;
+}
+
+/* Opciones del menú */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Estilo para los enlaces de navegación */
+nav ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all var(--transition-speed) ease;
+  padding: 8px 15px;
+  border-radius: 6px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Indicador de enlace activo */
+nav ul li a.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav ul li a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 15%;
+  width: 70%;
+  height: 3px;
+  background-color: var(--accent-color);
+  border-radius: 10px;
+}
+
+/* Efecto hover mejorado */
+nav ul li a:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  box-shadow: 0 3px 8px rgba(241, 196, 15, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Estilo para el botón de Cerrar Sesión */
+nav ul li button {
+  color: var(--text-color);
+  background-color: rgba(231, 76, 60, 0.8);
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 15px;
+  border-radius: 6px;
+  transition: all var(--transition-speed) ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Efecto hover en el botón */
+nav ul li button:hover {
+  background-color: rgb(231, 76, 60);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(231, 76, 60, 0.4);
+}
+
+/* Iconos dentro del botón (opcional) */
+nav ul li button i {
+  font-size: 1.1rem;
+}
+
+/* Mueve el botón de Cerrar Sesión a la derecha */
+nav ul li:last-child {
+  margin-left: auto;
+}
+
+/* Indicador de nueva nota mejorado */
+.nueva-nota-indicador {
+  position: relative;
+  color: #e74c3c;
+  font-weight: bold;
+  margin-left: 6px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e74c3c;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  color: white;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Ajustar el contenido principal */
+main {
+  padding-top: 85px;
+  transition: padding-top var(--transition-speed) ease;
+}
+
+main.nav-scrolled {
+  padding-top: 65px;
+}
+
+/* Responsivo mejorado */
+@media (max-width: 768px) {
+  nav {
+    padding: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  nav .logo {
+    margin-bottom: 15px;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  
+  nav ul li {
+    width: 100%;
+  }
+  
+  nav ul li a, 
+  nav ul li button {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  
+  nav ul li:last-child {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+  
+  main {
+    padding-top: 150px;
+  }
+}
+
+/* Menú hamburguesa para móvil */
+.menu-toggle {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  nav ul {
+    display: none;
+  }
+  
+  nav.menu-open ul {
+    display: flex;
+  }
+}

@@ -1,0 +1,208 @@
+/* Contenedor principal */
+.notas-admin-container {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;  /* Fondo más suave y moderno */
+  padding: 30px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
+}
+
+/* Título principal */
+h1 {
+  color: #1a1a2e;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  background: linear-gradient(to right, #4a4e69, #22223b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 120px; /* Increased from 80px to 120px */
+}
+
+/* Estilo para la lista de notas */
+.notas-list {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Estilo para cada item de la nota */
+.nota-item {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nota-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #4caf50, #81c784);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nota-item:hover::before {
+  transform: scaleX(1);
+}
+
+.nota-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Estilo del título de cada nota */
+.nota-item h3 {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+  position: relative;
+}
+
+/* Estilo del texto de cada nota */
+.nota-item p {
+  color: #34495e;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.nota-item small {
+  color: #7f8c8d;
+  display: block;
+  margin-bottom: 15px;
+  font-size: 0.8rem;
+}
+
+/* Estilo para las notas leídas */
+.nota-item.leida {
+  background-color: #e8f5e9;
+  border-left: 6px solid #4caf50;
+  opacity: 0.7;
+}
+
+/* Botones */
+.mark-read-button,
+.delete-button {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mark-read-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.mark-read-button:hover {
+  background-color: #45a049;
+}
+
+.mark-read-button.disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .notas-list {
+    grid-template-columns: 1fr;
+  }
+}
+/* Estilo para las notas no leídas */
+.nota-item.no-leida {
+  border-left: 6px solid #f44336;
+}
+
+/* Estructura de las notas */
+.nota-header {
+  display: flex;
+  align-items: center;
+}
+
+.nota-actions {
+  margin-top: 15px;
+  display: flex;
+}
+
+/* Indicador de nueva nota */
+.nueva-nota-indicador {
+  display: inline-block;
+  color: #f44336 !important;
+  font-weight: bold;
+  margin-left: 10px;
+  font-size: 1.5em;
+  animation: parpadeo 1s infinite;
+  -webkit-text-fill-color: #f44336 !important; /* Esto es importante para anular el título */
+  background: none !important;
+  padding: 0 5px;
+}
+
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Indicador global de notas */
+.indicador-global {
+  position: absolute;
+  top: 120px;
+  right: 30px;
+  background-color: #f44336;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.nueva-nota-indicador {
+  color: red; /* Rojo */
+  font-weight: bold;
+  margin-left: 5px;
+  font-size: 18px;
+}

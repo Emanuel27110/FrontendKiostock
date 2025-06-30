@@ -1,0 +1,272 @@
+/* Estilos base para toda la aplicación */
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  min-height: 100vh;
+  background-color: grey;
+  background-image: linear-gradient(to bottom right, #f5f5f5, #e0e0e0);
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor específico para la página de login */
+.login-page {
+  /* El fondo solo se aplica a este contenedor */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./kiosquito.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 420px;
+  /* Modificado: Ahora el fondo es completamente transparente */
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  color: #ffffff; /* Cambiado a blanco para mejor legibilidad con fondo transparente */
+  padding: 45px;
+  border-radius: 24px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  /* Nuevo gradiente que coincide con los tonos marrones y rojos del chocolate */
+  background: linear-gradient(90deg, #8B4513, #A0522D, #D2691E);
+  z-index: 1;
+}
+
+.wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.wrapper h1 {
+  font-size: 32px;
+  text-align: center;
+  color: #ffffff; /* Cambiado a blanco para mejor visibilidad */
+  margin-bottom: 35px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 12px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Añadido para mejorar legibilidad */
+}
+
+.wrapper h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  /* Gradiente de chocolates */
+  background: linear-gradient(90deg, #8B4513, #D2691E);
+  border-radius: 3px;
+}
+
+.wrapper .input-box {
+  position: relative;
+  width: 100%;
+  height: 55px;
+  margin: 32px 0;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7); /* Cajas de input semi-transparentes */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  outline: none;
+  border-radius: 12px;
+  font-size: 16px;
+  color: #333;
+  padding: 20px 45px 20px 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-box input::placeholder {
+  color: #555555;
+  transition: all 0.3s ease;
+}
+
+.input-box input:focus {
+  background: rgba(255, 255, 255, 0.9);
+  /* Color borde coincidiendo con chocolate */
+  border-color: rgba(160, 82, 45, 0.7);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.input-box input:focus::placeholder {
+  transform: translateY(-5px);
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  /* Color de íconos que combina con el chocolate */
+  color: #D2691E;
+  transition: all 0.3s ease;
+}
+
+/* Estilo para el botón de mostrar/ocultar contraseña */
+.input-box .toggle-password {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #A0522D;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-box .toggle-password:hover {
+  color: #8B4513;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.input-box input:focus + .icon {
+  color: #8B4513;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 15px 0 30px;
+  color: #ffffff; /* Cambiado para mejor legibilidad */
+}
+
+.remember-forgot label {
+  display: flex;
+  align-items: center;
+}
+
+.remember-forgot label input {
+  margin-right: 5px;
+  /* Color checkbox */
+  accent-color: #A0522D;
+}
+
+.remember-forgot a {
+  /* Color enlaces */
+  color: #ffffff; /* Cambiado para mejor legibilidad */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600; /* Añadido negrita para mejorar legibilidad */
+}
+
+.remember-forgot a:hover {
+  text-decoration: underline;
+  color: #FFE4C4; /* Tono más claro al pasar el mouse */
+}
+
+.wrapper button {
+  width: 100%;
+  height: 55px;
+  /* Gradiente de botón que combina con los chocolates */
+  background: linear-gradient(90deg, #A0522D, #D2691E);
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 17px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: 40px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.5s ease;
+}
+
+.wrapper button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.wrapper button:hover::before {
+  left: 100%;
+}
+
+.wrapper button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.register-link {
+  font-size: 14px;
+  text-align: center;
+  margin: 30px 0 0;
+  color: #ffffff; /* Cambiado para mejor legibilidad */
+}
+
+.register-link p a {
+  color: #FFE4C4; /* Color más claro para enlaces */
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.register-link p a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wrapper {
+  animation: fadeIn 0.8s ease forwards;
+}

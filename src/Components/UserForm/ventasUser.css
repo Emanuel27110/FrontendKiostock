@@ -1,0 +1,355 @@
+/* Contenedor principal */
+.ventas-container {
+    margin-top: 80px;
+    padding: 40px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Títulos de secciones */
+  .section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .section-title i {
+    margin-right: 8px;
+    font-size: 1.5rem;
+  }
+  
+  /* Estilos generales del formulario */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  input,
+  select {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: #ffcc00;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+  }
+  
+  button {
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  button:hover {
+    background-color: #ffcc00;
+    color: #fff;
+    transform: translateY(-3px);
+  }
+  
+  button:active {
+    transform: translateY(1px);
+  }
+  
+  /* Estilo de los botones primarios */
+  .btn-primary {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e6b800;
+  }
+  
+  /* Estilo de los botones secundarios */
+  .btn-secondary {
+    background-color: transparent;
+    border: 1px solid #ffcc00;
+    color: #ffcc00;
+    font-weight: bold;
+    border-radius: 30px;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #ffcc00;
+    color: #333;
+    transform: scale(1.1);
+  }
+  
+  /* Diseño de los productos */
+  .productos-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .producto-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .producto-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .producto-card h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .producto-card p {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  .producto-card button {
+    width: 100%;
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+  }
+  
+  .producto-card button:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* Estilos para la tabla de ventas */
+  .ventas-table-container {
+    margin-top: 30px;
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th,
+  td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  td {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  /* Estilo para las imágenes en las ventas */
+  .producto-imagen-venta {
+    width: 50px; /* Ajusta el tamaño de las imágenes */
+    height: 50px; /* Asegura que las imágenes tengan un tamaño adecuado */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 10px;
+  }
+  
+  /* Ajustes de íconos dentro de los botones */
+  section-title i,
+  button i {
+    margin-right: 8px; /* Espacio entre íconos y texto */
+    font-size: 1.2rem;
+  }
+  
+  /* Cambiar color de íconos en botones */
+  button .btn-primary i,
+  button .btn-secondary i {
+    color: #fff;
+  }
+  
+  button .btn-primary:hover i,
+  button .btn-secondary:hover i {
+    color: #333;
+  }
+  /* Estilos para el contenedor de la barra de búsqueda */
+.buscador-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Estilo para el contenedor del input y el ícono */
+.input-search-container {
+  position: relative;
+  flex-grow: 1;
+}
+
+/* Estilo para el input de búsqueda */
+.buscador-input {
+  width: 100%;
+  padding: 12px 15px 12px 40px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.buscador-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.25);
+}
+
+/* Estilo para el ícono de búsqueda */
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 18px;
+}
+
+/* Estilo para el botón de limpiar */
+.btn-limpiar {
+  padding: 10px 15px;
+  background-color: #f1f1f1;
+  color: #555;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-limpiar:hover {
+  background-color: #e0e0e0;
+}
+
+/* Estilo para el mensaje de no resultados */
+.no-resultados {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #666;
+  font-size: 16px;
+  margin: 15px 0;
+  border: 1px dashed #ccc;
+}
+/* Estilos para la paginación */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+.pagination-button {
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #ffcc00;
+  border-color: #ffcc00;
+  color: #333;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  font-size: 0.9rem;
+  color: #666;
+  background-color: #f8f9fa;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.pagination-pages {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.pagination-number {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-number:hover {
+  background-color: #e9ecef;
+  border-color: #ced4da;
+}
+
+.pagination-number.active {
+  background-color: #ffcc00;
+  border-color: #ffcc00;
+  color: #333;
+  font-weight: bold;
+}
+
+.pagination-ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-weight: bold;
+  color: #666;
+}

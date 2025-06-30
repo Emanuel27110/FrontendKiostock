@@ -1,0 +1,126 @@
+/* UserForm.css Mejorado */
+.user-welcome-container {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efecto de zoom suave en la imagen de fondo */
+.user-welcome-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.85) contrast(1.1);
+    transition: transform 25s ease;
+    transform: scale(1.1);
+    z-index: -1;
+}
+
+.user-welcome-container:hover::before {
+    transform: scale(1);
+}
+
+.welcome-overlay {
+    background: rgba(0, 0, 0, 0.25); /* Más transparente como solicitaste */
+    backdrop-filter: blur(3px); /* Reducido ligeramente para mayor transparencia */
+    padding: 3rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 8px 32px rgba(255, 215, 0, 0.2); /* Sombra dorada aún más sutil */
+    animation: fadeIn 1.2s ease-out;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde más sutil */
+}
+
+.welcome-title {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 700;
+    color: white;
+    /* Sombra de texto más definida y menos difusa */
+    text-shadow: 
+        0 0 1px rgba(255, 255, 255, 0.9),
+        0 0 10px rgba(255, 255, 255, 0.6);
+    margin-bottom: 1.8rem;
+    line-height: 1.2;
+    animation: slideDown 0.9s ease-out;
+    text-align: center;
+    /* Mejora la nitidez con propiedades CSS avanzadas */
+    font-smooth: always;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.5px;
+}
+
+.welcome-phrase {
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-style: italic;
+    color: #ffd700; /* Color dorado para el eslogan */
+    /* Sombra más definida para mejor legibilidad */
+    text-shadow: 
+        0 0 1px black,
+        0 0 3px rgba(0, 0, 0, 0.8);
+    line-height: 1.6;
+    animation: slideUp 0.9s ease-out;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Animaciones mejoradas */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Media queries para responsividad */
+@media screen and (max-width: 768px) {
+    .welcome-overlay {
+        padding: 2rem;
+        margin: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .welcome-overlay {
+        padding: 1.5rem;
+    }
+    
+    .welcome-title {
+        margin-bottom: 1.2rem;
+    }
+}

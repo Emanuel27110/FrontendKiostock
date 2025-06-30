@@ -1,0 +1,35 @@
+.print-ticket-container {
+    background-color: #ffd700; /* Fondo amarillo */
+    color: #000; /* Texto negro */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .print-ticket-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .print-ticket-button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .print-ticket-button {
+    background-color: #000; /* Fondo negro */
+    color: #ffd700; /* Texto amarillo */
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .print-ticket-button:hover {
+    background-color: #ffd700; /* Fondo amarillo */
+    color: #000; /* Texto negro */
+  }

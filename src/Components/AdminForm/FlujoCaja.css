@@ -1,0 +1,442 @@
+/* FlujoCaja.css - Versión mejorada */
+
+/* Contenedor principal */
+.fluxo-caja-container {
+  width: 92%;
+  max-width: 1400px;
+  margin: 60px auto 40px;
+  padding: 2.5rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Título principal con animación sutil */
+.fluxo-caja-container h2 {
+  text-align: center;
+  color: #1a1a1a;
+  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 1.2rem;
+}
+
+.fluxo-caja-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to right, #28a745, #20c997);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.fluxo-caja-container h2:hover::after {
+  width: 150px;
+}
+
+/* Filtro de fechas - diseño mejorado */
+.date-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin: 2.5rem 0;
+  padding: 2.2rem;
+  background-color: #f8f9fa;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04), inset 0 2px 4px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.date-filter:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06), inset 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.filter-fields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.2rem;
+  flex-wrap: wrap;
+}
+
+/* Grupos de inputs con estilos mejorados */
+.date-input-group, .tipo-venta-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.2s ease;
+}
+
+.date-input-group:hover, .tipo-venta-select:hover {
+  transform: translateY(-2px);
+}
+
+.date-filter label {
+  font-size: 1rem;
+  color: #343a40;
+  font-weight: 600;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.date-input-group:hover label, .tipo-venta-select:hover label {
+  color: #28a745;
+}
+
+/* Inputs y select con estilos consistentes */
+.date-filter input,
+.tipo-venta-select select {
+  padding: 0.8rem 1.1rem;
+  font-size: 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  outline: none;
+  width: 200px;
+  background-color: white;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+
+.date-filter input:focus,
+.tipo-venta-select select:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.15);
+}
+
+/* Estilo mejorado para el selector */
+.tipo-venta-select select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2328a745' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 16px 12px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tipo-venta-select select:hover {
+  border-color: #ced4da;
+}
+
+/* Botones con animaciones mejoradas */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.filter-button,
+.clear-button,
+.export-button {
+  padding: 0.85rem 1.8rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-button {
+  background: linear-gradient(145deg, #30b049, #28a745);
+  color: white;
+}
+
+.clear-button {
+  background: linear-gradient(145deg, #7a818a, #6c757d);
+  color: white;
+}
+
+.filter-button:hover,
+.clear-button:hover,
+.export-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.filter-button:active,
+.clear-button:active,
+.export-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Botones de exportación con estilos mejorados */
+.export-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 2.5rem 0;
+}
+
+.export-button.excel {
+  background: linear-gradient(145deg, #278c52, #217346);
+  color: white;
+}
+
+.export-button.pdf {
+  background: linear-gradient(145deg, #e13e4e, #dc3545);
+  color: white;
+}
+
+/* Contenedores de gráficos con animaciones y estilos mejorados */
+.chart-container {
+  background-color: white;
+  padding: 2.2rem;
+  border-radius: 14px;
+  margin-bottom: 3rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-container:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.chart-container h3 {
+  text-align: center;
+  color: #343a40;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.chart-container h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #e9ecef;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.chart-container:hover h3::after {
+  width: 100px;
+  background: linear-gradient(to right, #28a745, #20c997);
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 420px !important;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Estilos específicos para gráficos por tipo con diseño mejorado */
+.chart-container.productos {
+  border-left: 6px solid rgba(54, 162, 235, 0.7);
+}
+
+.chart-container.embutidos {
+  border-left: 6px solid rgba(255, 99, 132, 0.7);
+}
+
+.chart-container.todos {
+  border-left: 6px solid rgba(75, 192, 192, 0.7);
+}
+
+/* Antes y después para los contenedores de gráficos */
+.chart-container.productos::before,
+.chart-container.embutidos::before,
+.chart-container.todos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.chart-container.productos:hover::before {
+  background: linear-gradient(to right, rgba(54, 162, 235, 0.7), transparent);
+}
+
+.chart-container.embutidos:hover::before {
+  background: linear-gradient(to right, rgba(255, 99, 132, 0.7), transparent);
+}
+
+.chart-container.todos:hover::before {
+  background: linear-gradient(to right, rgba(75, 192, 192, 0.7), transparent);
+}
+
+/* Estado de carga mejorado */
+.loading {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #6c757d;
+  margin: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 4rem;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(40, 167, 69, 0.15);
+  border-radius: 50%;
+  border-top-color: #28a745;
+  animation: spin 1s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mensaje de "no hay datos" estilizado */
+.no-data-message {
+  text-align: center;
+  padding: 3rem;
+  margin: 2rem 0;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.no-data-message p {
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin: 0;
+}
+
+/* Ajustes responsivos mejorados */
+@media (max-width: 992px) {
+  .fluxo-caja-container {
+    width: 95%;
+    padding: 2rem;
+  }
+  
+  .fluxo-caja-container h2 {
+    font-size: 2.2rem;
+  }
+  
+  .chart-container canvas {
+    height: 350px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .fluxo-caja-container {
+    width: 95%;
+    padding: 1.5rem;
+    margin: 40px auto 30px;
+  }
+  
+  .fluxo-caja-container h2 {
+    font-size: 2rem;
+  }
+  
+  .date-filter {
+    padding: 1.8rem 1.2rem;
+  }
+  
+  .filter-fields {
+    gap: 1.5rem;
+  }
+  
+  .date-input-group, .tipo-venta-select {
+    width: 100%;
+  }
+  
+  .date-filter input, .tipo-venta-select select {
+    width: 100%;
+  }
+  
+  .filter-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .filter-button, .clear-button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .export-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .export-button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .chart-container {
+    padding: 1.5rem;
+  }
+  
+  .chart-container canvas {
+    height: 320px !important;
+  }
+  
+  .chart-container h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fluxo-caja-container {
+    width: 98%;
+    padding: 1.2rem;
+    margin: 30px auto 20px;
+  }
+  
+  .fluxo-caja-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  .date-filter {
+    padding: 1.5rem 1rem;
+  }
+  
+  .chart-container {
+    padding: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .chart-container canvas {
+    height: 280px !important;
+  }
+  
+  .loading {
+    padding: 2.5rem;
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+  }
+}

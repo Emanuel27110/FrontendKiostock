@@ -1,0 +1,109 @@
+/* Estilo para el modal del carrito */
+.carrito-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Contenido del modal */
+  .carrito-contenido {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    max-height: 80vh; /* Evita que se extienda fuera de la pantalla */
+    overflow-y: auto; /* Agrega scroll si el contenido es demasiado largo */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Título centrado y destacado */
+  .carrito-contenido h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  /* Lista de productos */
+  .carrito-contenido ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Elementos de la lista */
+  .carrito-contenido li {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+  }
+  
+  /* Texto del producto */
+  .carrito-contenido li strong {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  /* Botón de cerrar */
+  .carrito-contenido .btn-close {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 25px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  /* Hover para el botón */
+  .carrito-contenido .btn-close:hover {
+    background-color: #e53935;
+  }
+  
+  /* Contenedor para botones adicionales */
+  .botones-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaciado vertical entre botones */
+  }
+  
+  /* Espacio entre botones en línea */
+  .btn-primary:first-of-type {
+    margin-right: 20px; /* Espacio horizontal entre botones */
+  }
+  
+  /* Espaciado extra en el total */
+  .carrito-contenido ul li:last-child {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  /* Scroll bar personalizado (opcional) */
+  .carrito-contenido::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .carrito-contenido::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+  
+  .carrito-contenido::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+  }
+  
