@@ -1,5 +1,21 @@
 // src/config/api.js
+import axios from 'axios';
+
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+
+// Crear instancia de axios con interceptor
+const api = axios.create({
+  baseURL: API_BASE_URL
+});
+
+// Interceptor para agregar token automáticamente
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 
 export const API_ENDPOINTS = {
   // Usuarios - CORREGIDO
@@ -52,5 +68,8 @@ export const API_ENDPOINTS = {
 
 // Para compatibilidad con archivos existentes
 export const API_URL = `${API_BASE_URL}/api`;
+
+// Exportar la instancia de axios configurada
+export { api };
 
 export default API_BASE_URL;

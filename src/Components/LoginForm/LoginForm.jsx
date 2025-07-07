@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './LoginForm.css';
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
-import axios from "axios";
 import Swal from "sweetalert2";
-import { API_ENDPOINTS } from '../../config/api';
+import { API_ENDPOINTS, api } from '../../config/api';
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -17,12 +16,14 @@ const LoginForm = () => {
 
     try {
       // Petición al backend para iniciar sesión
-      const response = await axios.post(
+      const response = await api.post(
         API_ENDPOINTS.LOGIN,
-        { email, contraseña },
-        { withCredentials: true } // Asegura que las cookies se envíen
+        { email, contraseña }
       );
       const userRole = response.data.rol;
+      
+      // Guardar token en localStorage
+      localStorage.setItem('token', response.data.token);
 
       // Redirección según el rol del usuario con `replace: true`
       if (userRole === "administrador") {

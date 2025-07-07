@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import './AdminForm.css';
 import NavBarForm from "../NavBarForm/NavBarForm";
 import { FaUser, FaLock, FaUserTag, FaTrash, FaEdit } from "react-icons/fa";
-import axios from "axios";
 import Swal from "sweetalert2";
-import { API_ENDPOINTS } from "../../config/api";
+import { API_ENDPOINTS, api } from "../../config/api";
 
 const AdminForm = () => {
   const [nombre, setNombre] = useState("");
@@ -19,9 +18,7 @@ const AdminForm = () => {
   const cargarUsuarios = async () => {
     try {
       console.log('Intentando cargar usuarios...'); // Debug
-      const response = await axios.get(API_ENDPOINTS.USERS, { 
-        withCredentials: true 
-      });
+      const response = await api.get(API_ENDPOINTS.USERS);
       console.log('Respuesta del servidor:', response.data); // Debug
       setUsuarios(response.data);
     } catch (error) {
@@ -54,10 +51,9 @@ const AdminForm = () => {
     try {
       if (editMode) {
         // Actualizar usuario existente
-        await axios.put(
+        await api.put(
           `${API_ENDPOINTS.USERS}/${currentUserId}`,
-          { nombre, email, rol, contraseña: contraseña || undefined }, // Solo envía la contraseña si se ha modificado
-          { withCredentials: true }
+          { nombre, email, rol, contraseña: contraseña || undefined } // Solo envía la contraseña si se ha modificado
         );
 
         Swal.fire({
@@ -67,10 +63,9 @@ const AdminForm = () => {
         });
       } else {
         // Crear nuevo usuario
-        await axios.post(
+        await api.post(
           API_ENDPOINTS.REGISTER,
-          { nombre, email, contraseña, rol },
-          { withCredentials: true }
+          { nombre, email, contraseña, rol }
         );
 
         Swal.fire({
@@ -123,9 +118,7 @@ const AdminForm = () => {
         cancelButtonText: 'Cancelar'
       }).then(async (result) => {
         if (result.isConfirmed) {
-          await axios.delete(`${API_ENDPOINTS.USERS}/${userId}`, 
-            { withCredentials: true }
-          );
+          await api.delete(`${API_ENDPOINTS.USERS}/${userId}`);
           cargarUsuarios();
           Swal.fire(
             '¡Eliminado!',
