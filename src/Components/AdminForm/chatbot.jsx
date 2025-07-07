@@ -1,6 +1,7 @@
 import React, { useState } from "react"; 
 import "./Chatbot.css";
 import axios from 'axios'; // Importamos axios para hacer la consulta al backend
+import { API_ENDPOINTS } from '../../config/api.js';
 
 const Chatbot = ({ productos }) => {
   const [mensaje, setMensaje] = useState("");
@@ -10,7 +11,7 @@ const Chatbot = ({ productos }) => {
   const manejarConsulta = async () => {
     try {
       // Llamada al backend para consultar el stock del producto
-      const response = await axios.get(`http://localhost:4000/api/productos/consultar-stock/${mensaje}`, { withCredentials: true });
+      const response = await axios.get(`${API_ENDPOINTS.STOCK}/${mensaje}`, { withCredentials: true });
       
       const { descripcion, stock } = response.data;
       setRespuesta(`El producto "${descripcion}" tiene un stock de ${stock} unidades.`);

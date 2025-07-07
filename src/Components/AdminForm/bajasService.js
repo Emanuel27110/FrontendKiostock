@@ -1,7 +1,8 @@
 // bajasService.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:4000/api';
+
+import { API_URL } from '../../config/api.js';
 
 // Configuración para usar cookies en lugar de tokens
 const getConfig = () => {

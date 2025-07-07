@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import "./EmbutidosAdmin.css";
 import { imprimirTicketEmbutidos } from "./ticketEmbutidosService.js";
+import { API_ENDPOINTS } from '../../config/api.js';
 
 const EmbutidosAdmin = () => {
   const [embutidos, setEmbutidos] = useState([]);
@@ -168,7 +169,7 @@ const EmbutidosAdmin = () => {
   // Función para obtener el perfil del usuario actual
   const obtenerPerfilUsuario = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/profile", {
+      const response = await axios.get(`${API_ENDPOINTS.PROFILE}`, {
         withCredentials: true
       });
       setUsuarioActual(response.data);

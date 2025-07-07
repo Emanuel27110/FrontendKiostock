@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import './notasAdmin.css';
+import { API_ENDPOINTS } from '../../config/api';
 
 function NotasAdmin() {
   const [notas, setNotas] = useState([]);
@@ -11,7 +12,7 @@ function NotasAdmin() {
   useEffect(() => {
     const fetchNotas = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/notas");
+        const response = await axios.get(API_ENDPOINTS.NOTAS);
         setNotas(response.data);
         
         // Contar las notas no leídas
@@ -45,7 +46,7 @@ function NotasAdmin() {
 
     if (confirm.isConfirmed) {
       try {
-        await axios.put(`http://localhost:4000/api/notas/${id}/leida`);
+        await axios.put(`${API_ENDPOINTS.NOTAS}/${id}/leida`);
         const notasActualizadas = notas.map(nota => nota._id === id ? { ...nota, leida: true } : nota);
         setNotas(notasActualizadas);
         
@@ -74,7 +75,7 @@ function NotasAdmin() {
 
     if (confirm.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:4000/api/notas/${id}`);
+        await axios.delete(`${API_ENDPOINTS.NOTAS}/${id}`);
         const notasActualizadas = notas.filter(nota => nota._id !== id);
         setNotas(notasActualizadas);
         

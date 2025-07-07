@@ -25,6 +25,7 @@ import "./BajasUser.css"; // Tendremos que crear este archivo CSS
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { API_ENDPOINTS } from '../../config/api';
 
 const motivos = ["vencimiento", "rotura", "defecto", "otro"];
 
@@ -43,12 +44,12 @@ const traducirMotivo = (motivo) => {
 const exportarExcel = (datos) => {
   const listaFormateada = datos.map(item => ({
     Fecha: new Date(item.createdAt).toLocaleDateString(),
-    Producto: item.producto.descripcion,
-    Cantidad: item.cantidad,
-    Motivo: traducirMotivo(item.motivo),
-    Descripcion: item.descripcion,
-    "Valor Perdido": `$${item.valorPerdida.toFixed(2)}`,
-    "Registrado por": item.user.username
+    Producto: item.producto?.descripcion || 'N/A',
+    Cantidad: item.cantidad || 0,
+    Motivo: traducirMotivo(item.motivo || ''),
+    Descripcion: item.descripcion || '',
+    "Valor Perdido": `$${(item.valorPerdida || 0).toFixed(2)}`,
+    "Registrado por": item.user?.nombre || item.user?.username || "N/A"
   }));
 
   const worksheet = XLSX.utils.json_to_sheet(listaFormateada);
@@ -87,12 +88,14 @@ const exportarPDF = (datos) => {
   // Preparar datos para la tabla
   const rows = datos.map(item => [
     new Date(item.createdAt).toLocaleDateString(),
-    item.producto.descripcion,
-    item.cantidad.toString(),
-    traducirMotivo(item.motivo),
-    item.descripcion.length > 30 ? item.descripcion.substring(0, 30) + "..." : item.descripcion,
-    `$${item.valorPerdida.toFixed(2)}`,
-    item.user.username
+    item.producto?.descripcion || 'N/A',
+    (item.cantidad || 0).toString(),
+    traducirMotivo(item.motivo || ''),
+    item.descripcion && item.descripcion.length > 30 
+      ? item.descripcion.substring(0, 30) + "..." 
+      : (item.descripcion || ''),
+    `$${(item.valorPerdida || 0).toFixed(2)}`,
+    item.user?.nombre || item.user?.username || "N/A"
   ]);
   
   // Crear tabla
@@ -121,7 +124,7 @@ const exportarPDF = (datos) => {
 // Función fetchProductos modificada para usar credentials: 'include'
 const fetchProductos = async () => {
   try {
-    const response = await fetch('http://localhost:4000/api/productos', {
+    const response = await fetch(API_ENDPOINTS.PRODUCTOS, {
       credentials: 'include',  // Para enviar cookies de sesión
       headers: {
         'Content-Type': 'application/json'
@@ -201,7 +204,7 @@ const BajasUser = () => {
   // Nueva función para cargar el usuario actual
   const cargarUsuarioActual = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/profile', {
+      const response = await fetch(API_ENDPOINTS.PROFILE, {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
@@ -359,10 +362,10 @@ const BajasUser = () => {
   // Nueva función para editar
   const manejarEditar = (baja) => {
     setFormBaja({
-      productoId: baja.producto._id,
-      cantidad: baja.cantidad,
-      motivo: baja.motivo,
-      descripcion: baja.descripcion,
+      productoId: baja.producto?._id || "",
+      cantidad: baja.cantidad || 1,
+      motivo: baja.motivo || "",
+      descripcion: baja.descripcion || "",
     });
     setEditando(true);
     setIdEditando(baja._id);
@@ -435,14 +438,23 @@ const BajasUser = () => {
     }
   };
 
+  // FUNCIÓN CORREGIDA: bajasFiltradas con verificaciones de null/undefined
   const bajasFiltradas = bajas.filter((baja) => {
+    // Verificaciones de null/undefined antes de acceder a las propiedades
+    if (!baja) return false;
+    
+    const productoDescripcion = baja.producto?.descripcion || '';
+    const bajaDescripcion = baja.descripcion || '';
+    const busquedaLower = busqueda.toLowerCase();
+    
     // Filtro por texto (busca en descripción del producto o en descripción de la baja)
     const coincideTexto = 
-      baja.producto.descripcion.toLowerCase().includes(busqueda.toLowerCase()) ||
-      baja.descripcion.toLowerCase().includes(busqueda.toLowerCase());
+      productoDescripcion.toLowerCase().includes(busquedaLower) ||
+      bajaDescripcion.toLowerCase().includes(busquedaLower);
     
-    // Filtro por motivos
-    const coincideMotivo = motivosFiltrados.includes("Todos") || motivosFiltrados.includes(baja.motivo);
+    // Filtro por motivos - también verificar que motivo existe
+    const motivoBaja = baja.motivo || '';
+    const coincideMotivo = motivosFiltrados.includes("Todos") || motivosFiltrados.includes(motivoBaja);
     
     return coincideTexto && coincideMotivo;
   });
@@ -456,6 +468,7 @@ const BajasUser = () => {
   };
 
   const formatearFecha = (fechaStr) => {
+    if (!fechaStr) return 'N/A';
     const fecha = new Date(fechaStr);
     return fecha.toLocaleDateString('es-ES', { 
       day: '2-digit', 
@@ -485,6 +498,8 @@ const BajasUser = () => {
         <FontAwesomeIcon icon={faSearch} className="icono-busqueda" />
       </div>
 
+      
+
       {mostrarEstadisticas && estadisticas && (
         <div className="estadisticas-container">
           <h2>Estadísticas de Bajas</h2>
@@ -492,19 +507,19 @@ const BajasUser = () => {
           <div className="estadisticas-cards">
             <div className="estadistica-card total">
               <h3>Total de Pérdidas</h3>
-              <p className="valor">${estadisticas.total.total.toFixed(2)}</p>
-              <p>Cantidad: {estadisticas.total.cantidadTotal} unidades</p>
-              <p>Total de bajas: {estadisticas.total.countTotal}</p>
+              <p className="valor">${estadisticas.total?.total?.toFixed(2) || '0.00'}</p>
+              <p>Cantidad: {estadisticas.total?.cantidadTotal || 0} unidades</p>
+              <p>Total de bajas: {estadisticas.total?.countTotal || 0}</p>
             </div>
 
-            {estadisticas.porMotivo.map(motivo => (
+            {estadisticas.porMotivo?.map(motivo => (
               <div className="estadistica-card" key={motivo._id}>
                 <h3>{traducirMotivo(motivo._id)}</h3>
-                <p className="valor">${motivo.valorTotal.toFixed(2)}</p>
-                <p>Cantidad: {motivo.cantidad} unidades</p>
-                <p>Registros: {motivo.count}</p>
+                <p className="valor">${(motivo.valorTotal || 0).toFixed(2)}</p>
+                <p>Cantidad: {motivo.cantidad || 0} unidades</p>
+                <p>Registros: {motivo.count || 0}</p>
               </div>
-            ))}
+            )) || []}
           </div>
 
           <div className="productos-mas-bajas">
@@ -518,13 +533,13 @@ const BajasUser = () => {
                 </tr>
               </thead>
               <tbody>
-                {estadisticas.productosMasBajas.map(producto => (
+                {estadisticas.productosMasBajas?.map(producto => (
                   <tr key={producto._id}>
-                    <td>{producto.descripcion}</td>
-                    <td>{producto.cantidad}</td>
-                    <td>${producto.valorTotal.toFixed(2)}</td>
+                    <td>{producto.descripcion || 'N/A'}</td>
+                    <td>{producto.cantidad || 0}</td>
+                    <td>${(producto.valorTotal || 0).toFixed(2)}</td>
                   </tr>
-                ))}
+                )) || []}
               </tbody>
             </table>
           </div>
@@ -545,7 +560,7 @@ const BajasUser = () => {
               <option value="">Seleccione un producto</option>
               {productos.map((producto) => (
                 <option key={producto._id} value={producto._id}>
-                  {producto.descripcion} - Stock: {producto.stock}
+                  {producto.descripcion || 'Producto sin descripción'} - Stock: {producto.stock || 0}
                 </option>
               ))}
             </select>
@@ -638,6 +653,7 @@ const BajasUser = () => {
               <th>Descripción</th>
               <th>Valor Perdido</th>
               <th>Registrado por</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -645,12 +661,13 @@ const BajasUser = () => {
               bajasPaginadas.map((baja) => (
                 <tr key={baja._id}>
                   <td>{formatearFecha(baja.createdAt)}</td>
-                  <td>{baja.producto.descripcion}</td>
-                  <td>{baja.cantidad}</td>
-                  <td>{traducirMotivo(baja.motivo)}</td>
-                  <td className="descripcion-celda">{baja.descripcion}</td>
-                  <td className="valor-celda">${baja.valorPerdida.toFixed(2)}</td>
-                  <td>{baja.user && baja.user.nombre ? baja.user.nombre : "N/A"}</td>
+                  <td>{baja.producto?.descripcion || 'N/A'}</td>
+                  <td>{baja.cantidad || 0}</td>
+                  <td>{traducirMotivo(baja.motivo || '')}</td>
+                  <td className="descripcion-celda">{baja.descripcion || ''}</td>
+                  <td className="valor-celda">${(baja.valorPerdida || 0).toFixed(2)}</td>
+                  <td>{baja.user?.nombre || baja.user?.username || "N/A"}</td>
+                  
                 </tr>
               ))
             ) : (

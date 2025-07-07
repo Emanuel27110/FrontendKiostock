@@ -27,6 +27,7 @@ import "./ventasUser.css";
 import Swal from 'sweetalert2';
 import PrintTicket from "./printTicket";
 import axios from "axios";
+import { API_ENDPOINTS } from "../../config/api";
 
 const VentasUser = () => {
   const [productos, setProductos] = useState([]);
@@ -56,7 +57,7 @@ const VentasUser = () => {
   // Función para obtener promociones activas
   const obtenerPromociones = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/promociones", { 
+      const response = await axios.get(API_ENDPOINTS.PROMOCIONES, { 
         withCredentials: true 
       });
       const promocionesActivas = response.data.filter(promo => 
@@ -218,7 +219,7 @@ const VentasUser = () => {
         setVentasFiltradas(ventasObtenidas); // Inicializar las ventas filtradas
         
         // Obtener información del usuario actual
-        const response = await axios.get("http://localhost:4000/api/profile", { 
+        const response = await axios.get(API_ENDPOINTS.PROFILE, { 
           withCredentials: true 
         });
         setUsuarioActual(response.data);

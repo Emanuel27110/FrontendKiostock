@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:4000/api"; // Base URL
-const VENTAS_URL = `http://localhost:4000/api/ventas-embutidos`;
+import { API_URL, API_ENDPOINTS } from '../../config/api.js';
+const VENTAS_URL = API_ENDPOINTS.VENTAS_EMBUTIDOS;
 
 // Configuración con el token para autenticación
 const config = {

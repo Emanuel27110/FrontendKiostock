@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import './NavBarForm.css';
+import { API_ENDPOINTS } from '../../config/api';
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const NavBar = () => {
   useEffect(() => {
     const fetchNotas = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/notas");
+        const response = await axios.get(API_ENDPOINTS.NOTAS);
         // Contar las notas no leídas
         const cantidadNotasNoLeidas = response.data.filter(nota => !nota.leida).length;
         setNuevasNotas(cantidadNotasNoLeidas);

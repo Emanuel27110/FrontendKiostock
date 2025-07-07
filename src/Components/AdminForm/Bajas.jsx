@@ -25,6 +25,7 @@ import "./Bajas.css"; // Tendremos que crear este archivo CSS
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { API_ENDPOINTS } from '../../config/api';
 
 const motivos = ["vencimiento", "rotura", "defecto", "otro"];
 
@@ -123,7 +124,7 @@ const exportarPDF = (datos) => {
 // Función fetchProductos modificada para usar credentials: 'include'
 const fetchProductos = async () => {
   try {
-    const response = await fetch('http://localhost:4000/api/productos', {
+    const response = await fetch(API_ENDPOINTS.PRODUCTOS, {
       credentials: 'include',  // Para enviar cookies de sesión
       headers: {
         'Content-Type': 'application/json'
@@ -203,7 +204,7 @@ const Bajas = () => {
   // Nueva función para cargar el usuario actual
   const cargarUsuarioActual = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/profile', {
+      const response = await fetch(API_ENDPOINTS.PROFILE, {
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json'

@@ -6,10 +6,11 @@ import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import API_BASE_URL from '../../config/api';
 
 // Crear una instancia de Axios con URL base
 const api = axios.create({
-  baseURL: 'http://localhost:4000/api'
+  baseURL: `${API_BASE_URL}/api`
 });
 
 const RendimientoDashboard = () => {

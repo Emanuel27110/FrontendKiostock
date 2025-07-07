@@ -7,6 +7,7 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import NavBarForm from "../NavBarForm/NavBarForm";
 import './FlujoCaja.css';
+import { API_ENDPOINTS } from '../../config/api';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -279,13 +280,13 @@ const FlujoCaja = () => {
         try {
             // Realizar todas las llamadas en paralelo para mejorar el rendimiento
             const [responseCombined, responseProductos, responseEmbutidos] = await Promise.all([
-                axios.get("http://localhost:4000/api/caja", {
+                axios.get(API_ENDPOINTS.CAJA, {
                     params: { startDate, endDate }
                 }),
-                axios.get("http://localhost:4000/api/ventas", {
+                axios.get(API_ENDPOINTS.VENTAS, {
                     params: { startDate, endDate }
                 }),
-                axios.get("http://localhost:4000/api/ventas-embutidos", {
+                axios.get(API_ENDPOINTS.VENTAS_EMBUTIDOS, {
                     params: { startDate, endDate }
                 })
             ]);

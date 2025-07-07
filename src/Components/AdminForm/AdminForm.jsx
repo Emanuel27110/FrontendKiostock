@@ -4,6 +4,7 @@ import NavBarForm from "../NavBarForm/NavBarForm";
 import { FaUser, FaLock, FaUserTag, FaTrash, FaEdit } from "react-icons/fa";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { API_ENDPOINTS } from "../../config/api";
 
 const AdminForm = () => {
   const [nombre, setNombre] = useState("");
@@ -18,7 +19,7 @@ const AdminForm = () => {
   const cargarUsuarios = async () => {
     try {
       console.log('Intentando cargar usuarios...'); // Debug
-      const response = await axios.get("http://localhost:4000/api/users", { 
+      const response = await axios.get(API_ENDPOINTS.USERS, { 
         withCredentials: true 
       });
       console.log('Respuesta del servidor:', response.data); // Debug
@@ -54,7 +55,7 @@ const AdminForm = () => {
       if (editMode) {
         // Actualizar usuario existente
         await axios.put(
-          `http://localhost:4000/api/users/${currentUserId}`,
+          `${API_ENDPOINTS.USERS}/${currentUserId}`,
           { nombre, email, rol, contraseña: contraseña || undefined }, // Solo envía la contraseña si se ha modificado
           { withCredentials: true }
         );
@@ -67,7 +68,7 @@ const AdminForm = () => {
       } else {
         // Crear nuevo usuario
         await axios.post(
-          "http://localhost:4000/api/register",
+          API_ENDPOINTS.REGISTER,
           { nombre, email, contraseña, rol },
           { withCredentials: true }
         );
@@ -122,7 +123,7 @@ const AdminForm = () => {
         cancelButtonText: 'Cancelar'
       }).then(async (result) => {
         if (result.isConfirmed) {
-          await axios.delete(`http://localhost:4000/api/users/${userId}`, 
+          await axios.delete(`${API_ENDPOINTS.USERS}/${userId}`, 
             { withCredentials: true }
           );
           cargarUsuarios();

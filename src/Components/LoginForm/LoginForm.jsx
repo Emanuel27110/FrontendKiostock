@@ -4,6 +4,7 @@ import './LoginForm.css';
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { API_ENDPOINTS } from '../../config/api';
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ const LoginForm = () => {
     try {
       // Petición al backend para iniciar sesión
       const response = await axios.post(
-        "http://localhost:4000/api/login",
+        API_ENDPOINTS.LOGIN,
         { email, contraseña },
         { withCredentials: true } // Asegura que las cookies se envíen
       );

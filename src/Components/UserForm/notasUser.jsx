@@ -3,6 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import NavBarUser from "../NavBarForm/NavBarUser";
 import './notasUser.css';
+import { API_ENDPOINTS } from '../../config/api';
 
 function NotasUser() {
   const [notas, setNotas] = useState([]);
@@ -13,7 +14,7 @@ function NotasUser() {
   useEffect(() => {
     const fetchNotas = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/notas");
+        const response = await axios.get(API_ENDPOINTS.NOTAS);
         // Filtrar notas creadas por el vendedor
         const notasVendedor = response.data.filter((nota) => nota.creadaPor === "vendedor");
         setNotas(notasVendedor);
@@ -36,7 +37,7 @@ function NotasUser() {
     }
 
     try {
-      const response = await axios.post("http://localhost:4000/api/notas", {
+      const response = await axios.post(API_ENDPOINTS.NOTAS, {
         titulo,
         contenido,
         creadaPor: "vendedor",

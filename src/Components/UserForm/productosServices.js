@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:4000/api"; // Ajusta el puerto si es necesario
+import { API_URL } from '../../config/api.js';
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
