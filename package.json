@@ -13,6 +13,7 @@
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.6",
     "chatbot": "^1.2.3",
+    "express": "^4.18.2",
     "file-saver": "^2.0.5",
     "flowbite-react": "^0.10.2",
     "icons": "^1.0.0",
@@ -39,8 +40,9 @@
     "xlsx": "^0.18.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && cp public/_redirects build/",
+    "start": "node server.mjs",
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
