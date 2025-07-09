@@ -11,11 +11,38 @@ const api = axios.create({
 // Interceptor para agregar token automáticamente
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
+  
+  console.log('🔍 DEBUG - Token encontrado:', token ? 'SÍ' : 'NO');
+  
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
+    console.log('🔍 DEBUG - Header Authorization:', config.headers.Authorization);
   }
+  
+  console.log('🔍 DEBUG - URL completa:', config.baseURL + config.url);
+  
   return config;
 });
+
+// Interceptor de respuesta para manejar errores
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.error('🚨 ERROR de respuesta:', error.response?.status, error.response?.data);
+    
+    if (error.response?.status === 401) {
+      console.error('🚨 Token expirado o inválido');
+      localStorage.removeItem('token');
+      
+      // Evitar loops infinitos
+      if (window.location.pathname !== '/login') {
+        alert('Tu sesión ha expirado. Serás redirigido al login.');
+        window.location.href = '/login';
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 
 export const API_ENDPOINTS = {
   // Usuarios - CORREGIDO
