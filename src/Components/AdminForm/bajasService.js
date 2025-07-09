@@ -1,24 +1,15 @@
 // bajasService.js
-import axios from 'axios';
-
-
-import { API_URL } from '../../config/api.js';
-
-// Configuración para usar cookies en lugar de tokens
-const getConfig = () => {
-  return {
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    withCredentials: true  // Importante: esto hace que se envíen cookies con la solicitud
-  };
-};
+import { api } from '../../config/api.js';
 
 // Manejar errores de autenticación
 const handleAuthError = (error) => {
   if (error.response && error.response.status === 401) {
-    console.error('Error de autenticación. Redirigiendo al login...');
-    window.location.href = '/login';
+    console.error('Error de autenticación. Sesión expirada.');
+    // Dar tiempo para ver el error antes de redirigir
+    setTimeout(() => {
+      localStorage.removeItem('token');
+      window.location.href = '/login';
+    }, 2000);
   }
   throw error;
 };
@@ -26,7 +17,7 @@ const handleAuthError = (error) => {
 // Obtener todas las bajas
 export const fetchBajas = async () => {
   try {
-    const response = await axios.get(`${API_URL}/bajas`, getConfig());
+    const response = await api.get('/api/bajas');
     return response.data;
   } catch (error) {
     console.error('Error al obtener bajas:', error);
@@ -37,7 +28,7 @@ export const fetchBajas = async () => {
 // Obtener una baja por ID
 export const fetchBaja = async (id) => {
   try {
-    const response = await axios.get(`${API_URL}/bajas/${id}`, getConfig());
+    const response = await api.get(`/api/bajas/${id}`);
     return response.data;
   } catch (error) {
     console.error(`Error al obtener baja con ID ${id}:`, error);
@@ -48,7 +39,7 @@ export const fetchBaja = async (id) => {
 // Crear una nueva baja
 export const createBaja = async (bajaData) => {
   try {
-    const response = await axios.post(`${API_URL}/bajas`, bajaData, getConfig());
+    const response = await api.post('/api/bajas', bajaData);
     return response.data;
   } catch (error) {
     console.error('Error al crear baja:', error);
@@ -59,7 +50,7 @@ export const createBaja = async (bajaData) => {
 // Eliminar una baja
 export const deleteBaja = async (id) => {
   try {
-    const response = await axios.delete(`${API_URL}/bajas/${id}`, getConfig());
+    const response = await api.delete(`/api/bajas/${id}`);
     return response.data;
   } catch (error) {
     console.error(`Error al eliminar baja con ID ${id}:`, error);
@@ -70,7 +61,7 @@ export const deleteBaja = async (id) => {
 // Obtener estadísticas de bajas
 export const fetchEstadisticasBajas = async () => {
   try {
-    const response = await axios.get(`${API_URL}/bajas/estadisticas`, getConfig());
+    const response = await api.get('/api/bajas/estadisticas');
     return response.data;
   } catch (error) {
     console.error('Error al obtener estadísticas de bajas:', error);
@@ -81,9 +72,8 @@ export const fetchEstadisticasBajas = async () => {
 // Obtener bajas por rango de fechas
 export const fetchBajasPorFecha = async (fechaInicio, fechaFin) => {
   try {
-    const response = await axios.get(
-      `${API_URL}/bajas/por-fecha?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`,
-      getConfig()
+    const response = await api.get(
+      `/api/bajas/por-fecha?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`
     );
     return response.data;
   } catch (error) {
@@ -95,7 +85,7 @@ export const fetchBajasPorFecha = async (fechaInicio, fechaFin) => {
 // Actualizar una baja existente
 export const updateBaja = async (id, bajaData) => {
   try {
-    const response = await axios.put(`${API_URL}/bajas/${id}`, bajaData, getConfig());
+    const response = await api.put(`/api/bajas/${id}`, bajaData);
     return response.data;
   } catch (error) {
     console.error(`Error al actualizar baja con ID ${id}:`, error);
