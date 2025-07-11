@@ -4,7 +4,9 @@ import {
   createBaja,
   deleteBaja,
   fetchEstadisticasBajas,
-  updateBaja
+  updateBaja,
+  fetchProductos,
+  fetchUserProfile
 } from "./bajasService";
 import NavBarForm from "../NavBarForm/NavBarForm";
 import Swal from "sweetalert2";
@@ -121,38 +123,8 @@ const exportarPDF = (datos) => {
   doc.save("Reporte_Bajas.pdf");
 };
 
-// Función fetchProductos modificada para usar credentials: 'include'
-const fetchProductos = async () => {
-  try {
-    const response = await fetch(API_ENDPOINTS.PRODUCTOS, {
-      credentials: 'include',  // Para enviar cookies de sesión
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    
-    if (!response.ok) {
-      if (response.status === 401) {
-        // Redirigir al login si hay error de autenticación
-        Swal.fire({
-          icon: 'error',
-          title: 'Sesión expirada',
-          text: 'Por favor, inicie sesión nuevamente',
-          confirmButtonText: 'Ir al login'
-        }).then(() => {
-          window.location.href = '/login';
-        });
-        throw new Error('Error de autenticación');
-      }
-      throw new Error('Error al obtener productos');
-    }
-    
-    return await response.json();
-  } catch (error) {
-    console.error('Error al cargar productos:', error);
-    throw error;
-  }
-};
+
+
 
 const Bajas = () => {
   const [bajas, setBajas] = useState([]);
@@ -201,26 +173,16 @@ const Bajas = () => {
     verificarAutenticacion();
   }, []);
 
-  // Nueva función para cargar el usuario actual
-  const cargarUsuarioActual = async () => {
-    try {
-      const response = await fetch(API_ENDPOINTS.PROFILE, {
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      
-      if (!response.ok) {
-        throw new Error('Error al obtener perfil de usuario');
-      }
-      
-      const userData = await response.json();
-      setUsuarioActual(userData);
-    } catch (error) {
-      console.error("Error al cargar usuario actual:", error);
-    }
-  };
+
+  // Reemplaza cargarUsuarioActual con:
+const cargarUsuarioActual = async () => {
+  try {
+    const userData = await fetchUserProfile();
+    setUsuarioActual(userData);
+  } catch (error) {
+    console.error("Error al cargar usuario actual:", error);
+  }
+};
 
   const cargarBajas = async () => {
     try {
@@ -241,17 +203,16 @@ const Bajas = () => {
     }
   };
 
-  const cargarProductos = async () => {
-    try {
-      const productosData = await fetchProductos();
-      setProductos(productosData);
-    } catch (error) {
-      console.error("Error al cargar productos:", error);
-      // El manejo específico de 401 se hace en fetchProductos
-      throw error;
-    }
-  };
-
+  // Reemplaza cargarProductos con:
+const cargarProductos = async () => {
+  try {
+    const productosData = await fetchProductos();
+    setProductos(productosData);
+  } catch (error) {
+    console.error("Error al cargar productos:", error);
+    throw error;
+  }
+};
   const cargarEstadisticas = async () => {
     try {
       const estadisticasData = await fetchEstadisticasBajas();
