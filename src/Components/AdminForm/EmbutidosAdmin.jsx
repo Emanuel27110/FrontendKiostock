@@ -11,7 +11,7 @@ import {
 } from "../AdminForm/embutidosService.js";
 import NavBarForm from "../NavBarForm/NavBarForm";
 import Swal from "sweetalert2";
-import axios from "axios";
+import { api } from '../../config/api.js';
 import "./EmbutidosAdmin.css";
 import { imprimirTicketEmbutidos } from "./ticketEmbutidosService.js";
 import { API_ENDPOINTS } from '../../config/api.js';
@@ -167,22 +167,21 @@ const EmbutidosAdmin = () => {
   };
 
   // Función para obtener el perfil del usuario actual
-  const obtenerPerfilUsuario = async () => {
-    try {
-      const response = await axios.get(`${API_ENDPOINTS.PROFILE}`, {
-        withCredentials: true
-      });
-      setUsuarioActual(response.data);
-      
-      // Inicializar el campo vendedor con el nombre del usuario actual
-      setVenta(prevVenta => ({
-        ...prevVenta,
-        vendedor: response.data.nombre
-      }));
-    } catch (error) {
-      console.error("Error al obtener perfil de usuario:", error);
-    }
-  };
+  // POR ESTO:
+const obtenerPerfilUsuario = async () => {
+  try {
+    const response = await api.get('/api/profile');
+    setUsuarioActual(response.data);
+    
+    // Inicializar el campo vendedor con el nombre del usuario actual
+    setVenta(prevVenta => ({
+      ...prevVenta,
+      vendedor: response.data.nombre
+    }));
+  } catch (error) {
+    console.error("Error al obtener perfil de usuario:", error);
+  }
+};
 
   const cargarDatos = async () => {
     setLoading(true);
