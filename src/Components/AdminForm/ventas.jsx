@@ -55,7 +55,8 @@ const Ventas = () => {
   // Función para obtener promociones activas
   const obtenerPromociones = async () => {
     try {
-      const response = await api.get('/promociones');
+      const response = await api.get('/api/promociones');
+
       const promocionesActivas = response.data.filter(promo => 
         promo.activa && 
         new Date(promo.fechaInicio) <= new Date() && 
