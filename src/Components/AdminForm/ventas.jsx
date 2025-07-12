@@ -81,7 +81,7 @@ const Ventas = () => {
         await obtenerPromociones();
         
         // Obtener información del usuario actual
-        const response = await api.get('/profile');
+        const response = await api.get('/api/profile');
         setUsuarioActual(response.data);
         // Establecer el vendedor como el nombre del usuario actual
         setVendedor(response.data.nombre);
