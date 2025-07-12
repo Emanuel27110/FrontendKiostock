@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Chatbot.css";
-import { consultarStock } from "../Productos/productosService"; // Importar la función del servicio
+import { consultarStock } from "./productosService"; // Importar la función del servicio
 
 const Chatbot = ({ productos }) => {
   const [mensaje, setMensaje] = useState("");
