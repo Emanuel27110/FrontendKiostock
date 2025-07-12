@@ -1,11 +1,9 @@
-import axios from "axios";
-
-import { API_URL } from '../../config/api.js';
+import { api } from '../../config/api.js';
 
 // Obtener productos
 export const getProductos = async () => {
   try {
-    const response = await axios.get(`${API_URL}/productos`, { withCredentials: true });
+    const response = await api.get('/productos');
     return response.data;
   } catch (error) {
     console.error("Error al obtener productos:", error);
@@ -16,7 +14,7 @@ export const getProductos = async () => {
 // Obtener ventas
 export const getVentas = async () => {
   try {
-    const response = await axios.get(`${API_URL}/ventas`, { withCredentials: true });
+    const response = await api.get('/ventas');
     return response.data;
   } catch (error) {
     console.error("Error al obtener ventas:", error);
@@ -28,14 +26,12 @@ export const getVentas = async () => {
 export const createVenta = async (ventaData) => {
   try {
     console.log('=== VENTASSERVICE DEBUG ===');
-    console.log('URL:', `${API_URL}/ventas`);
+    console.log('URL:', '/ventas');
     console.log('Método:', 'POST');
     console.log('Datos enviados:', JSON.stringify(ventaData, null, 2));
-    console.log('WithCredentials:', true);
     console.log('============================');
 
-    const response = await axios.post(`${API_URL}/ventas`, ventaData, { 
-      withCredentials: true,
+    const response = await api.post('/ventas', ventaData, {
       headers: {
         'Content-Type': 'application/json',
       }
@@ -125,10 +121,9 @@ export const createVenta = async (ventaData) => {
 // Actualizar stock de un producto
 export const actualizarStock = async (idProducto, cantidadVendida) => {
   try {
-    const response = await axios.put(
-      `${API_URL}/productos/${idProducto}/actualizar-stock`,
-      { cantidadVendida },
-      { withCredentials: true }
+    const response = await api.put(
+      `/productos/${idProducto}/actualizar-stock`,
+      { cantidadVendida }
     );
     return response.data;
   } catch (error) {
@@ -140,7 +135,7 @@ export const actualizarStock = async (idProducto, cantidadVendida) => {
 // Eliminar una venta
 export const eliminarVenta = async (ventaId) => {
   try {
-    const response = await axios.delete(`${API_URL}/ventas/${ventaId}`, { withCredentials: true });
+    const response = await api.delete(`/ventas/${ventaId}`);
     return response.data;
   } catch (error) {
     console.error("Error al eliminar la venta:", error);
