@@ -4,7 +4,9 @@ import {
   createBaja,
   deleteBaja,
   fetchEstadisticasBajas,
-  updateBaja
+  updateBaja,
+  fetchProductos,
+  fetchUserProfile
 } from "./bajasService";
 import NavBarUser from "../NavBarForm/NavBarUser.jsx";
 import Swal from "sweetalert2";
@@ -18,14 +20,13 @@ import {
   faExclamationTriangle,
   faPencilAlt
 } from "@fortawesome/free-solid-svg-icons";
-import "./BajasUser.css"; // Tendremos que crear este archivo CSS
+import "./BajasUser.css";
 
 // Añadimos las dependencias que necesitaríamos para exportar (asumimos que están instaladas)
 // Si no están instaladas, necesitarás ejecutar: npm install xlsx jspdf jspdf-autotable
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-import { API_ENDPOINTS } from '../../config/api';
 
 const motivos = ["vencimiento", "rotura", "defecto", "otro"];
 
@@ -121,39 +122,6 @@ const exportarPDF = (datos) => {
   doc.save("Reporte_Bajas.pdf");
 };
 
-// Función fetchProductos modificada para usar credentials: 'include'
-const fetchProductos = async () => {
-  try {
-    const response = await fetch(API_ENDPOINTS.PRODUCTOS, {
-      credentials: 'include',  // Para enviar cookies de sesión
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    
-    if (!response.ok) {
-      if (response.status === 401) {
-        // Redirigir al login si hay error de autenticación
-        Swal.fire({
-          icon: 'error',
-          title: 'Sesión expirada',
-          text: 'Por favor, inicie sesión nuevamente',
-          confirmButtonText: 'Ir al login'
-        }).then(() => {
-          window.location.href = '/login';
-        });
-        throw new Error('Error de autenticación');
-      }
-      throw new Error('Error al obtener productos');
-    }
-    
-    return await response.json();
-  } catch (error) {
-    console.error('Error al cargar productos:', error);
-    throw error;
-  }
-};
-
 const BajasUser = () => {
   const [bajas, setBajas] = useState([]);
   const [productos, setProductos] = useState([]);
@@ -181,41 +149,22 @@ const BajasUser = () => {
       try {
         // Intentar cargar datos para verificar autenticación
         await cargarBajas();
-        cargarProductos();
-        cargarEstadisticas();
-        cargarUsuarioActual(); // Nuevo: obtener información del usuario actual
+        await cargarProductos();
+        await cargarEstadisticas();
+        await cargarUsuarioActual();
       } catch (error) {
-        if (error.response && error.response.status === 401) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Sesión expirada',
-            text: 'Por favor, inicie sesión nuevamente',
-            confirmButtonText: 'Ir al login'
-          }).then(() => {
-            window.location.href = '/login';
-          });
-        }
+        console.error('Error al verificar autenticación:', error);
+        // El error ya se maneja en los services individuales
       }
     };
 
     verificarAutenticacion();
   }, []);
 
-  // Nueva función para cargar el usuario actual
+  // Función para cargar el usuario actual usando el service
   const cargarUsuarioActual = async () => {
     try {
-      const response = await fetch(API_ENDPOINTS.PROFILE, {
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      
-      if (!response.ok) {
-        throw new Error('Error al obtener perfil de usuario');
-      }
-      
-      const userData = await response.json();
+      const userData = await fetchUserProfile();
       setUsuarioActual(userData);
     } catch (error) {
       console.error("Error al cargar usuario actual:", error);
@@ -228,16 +177,7 @@ const BajasUser = () => {
       setBajas(bajasData);
     } catch (error) {
       console.error("Error al cargar bajas:", error);
-      if (!error.response || error.response.status !== 401) {
-        // No mostrar este mensaje si es un error de autenticación
-        // ya que se maneja en fetchBajas
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "No se pudieron cargar las bajas. Intente nuevamente.",
-        });
-      }
-      throw error;
+      // El manejo de errores se hace en el service
     }
   };
 
@@ -247,8 +187,7 @@ const BajasUser = () => {
       setProductos(productosData);
     } catch (error) {
       console.error("Error al cargar productos:", error);
-      // El manejo específico de 401 se hace en fetchProductos
-      throw error;
+      // El manejo de errores se hace en el service
     }
   };
 
@@ -258,7 +197,7 @@ const BajasUser = () => {
       setEstadisticas(estadisticasData);
     } catch (error) {
       console.error("Error al cargar estadísticas:", error);
-      // No se muestra alerta, ya que el error 401 se maneja en el servicio
+      // El manejo de errores se hace en el service
     }
   };
 
@@ -412,6 +351,7 @@ const BajasUser = () => {
         await cargarBajas();
         await cargarEstadisticas();
       } catch (error) {
+        console.error("Error al eliminar baja:", error);
         Swal.fire({
           icon: "error",
           title: "Error",
@@ -498,7 +438,22 @@ const BajasUser = () => {
         <FontAwesomeIcon icon={faSearch} className="icono-busqueda" />
       </div>
 
-      
+      <div className="botones-accion">
+        <button className="btn-estadisticas" onClick={toggleEstadisticas}>
+          <FontAwesomeIcon icon={faChartPie} />
+          {mostrarEstadisticas ? "Ocultar" : "Mostrar"} Estadísticas
+        </button>
+        
+        <button className="btn-exportar" onClick={() => exportarExcel(bajasFiltradas)}>
+          <FontAwesomeIcon icon={faFileExcel} />
+          Exportar Excel
+        </button>
+        
+        <button className="btn-exportar" onClick={() => exportarPDF(bajasFiltradas)}>
+          <FontAwesomeIcon icon={faFilePdf} />
+          Exportar PDF
+        </button>
+      </div>
 
       {mostrarEstadisticas && estadisticas && (
         <div className="estadisticas-container">
@@ -653,7 +608,7 @@ const BajasUser = () => {
               <th>Descripción</th>
               <th>Valor Perdido</th>
               <th>Registrado por</th>
-              
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -667,7 +622,28 @@ const BajasUser = () => {
                   <td className="descripcion-celda">{baja.descripcion || ''}</td>
                   <td className="valor-celda">${(baja.valorPerdida || 0).toFixed(2)}</td>
                   <td>{baja.user?.nombre || baja.user?.username || "N/A"}</td>
-                  
+                  <td className="acciones-celda">
+                    {/* Solo mostrar acciones si el usuario actual es el que creó la baja */}
+                    {usuarioActual && baja.user && 
+                     (usuarioActual._id === baja.user._id || usuarioActual.id === baja.user._id) && (
+                      <>
+                        <button 
+                          className="btn-editar"
+                          onClick={() => manejarEditar(baja)}
+                          title="Editar"
+                        >
+                          <FontAwesomeIcon icon={faPencilAlt} />
+                        </button>
+                        <button 
+                          className="btn-eliminar"
+                          onClick={() => manejarEliminar(baja._id)}
+                          title="Eliminar"
+                        >
+                          <FontAwesomeIcon icon={faTrash} />
+                        </button>
+                      </>
+                    )}
+                  </td>
                 </tr>
               ))
             ) : (
