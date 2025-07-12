@@ -1,24 +1,41 @@
 import { api } from '../../config/api.js';
 
+// Manejar errores de autenticación
+const handleAuthError = (error) => {
+  if (error.response && error.response.status === 401) {
+    console.error('Error de autenticación. Sesión expirada.');
+    // El interceptor de axios ya maneja la redirección, pero podemos agregar un backup
+    if (!window.location.pathname.includes('/login')) {
+      setTimeout(() => {
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+      }, 1000);
+    }
+  }
+  throw error;
+};
+
 // Obtener productos
 export const getProductos = async () => {
   try {
-    const response = await api.get('/productos');
+    // ✅ AGREGAR /api/ porque la baseURL es solo http://localhost:4000
+    const response = await api.get('/api/productos');
     return response.data;
   } catch (error) {
     console.error("Error al obtener productos:", error);
-    throw error;
+    return handleAuthError(error);
   }
 };
 
 // Obtener ventas
 export const getVentas = async () => {
   try {
-    const response = await api.get('/ventas');
+    // ✅ AGREGAR /api/
+    const response = await api.get('/api/ventas');
     return response.data;
   } catch (error) {
     console.error("Error al obtener ventas:", error);
-    throw error;
+    return handleAuthError(error);
   }
 };
 
@@ -26,12 +43,13 @@ export const getVentas = async () => {
 export const createVenta = async (ventaData) => {
   try {
     console.log('=== VENTASSERVICE DEBUG ===');
-    console.log('URL:', '/ventas');
+    console.log('URL:', '/api/ventas'); // ✅ ACTUALIZADO
     console.log('Método:', 'POST');
     console.log('Datos enviados:', JSON.stringify(ventaData, null, 2));
     console.log('============================');
 
-    const response = await api.post('/ventas', ventaData, {
+    // ✅ AGREGAR /api/
+    const response = await api.post('/api/ventas', ventaData, {
       headers: {
         'Content-Type': 'application/json',
       }
@@ -114,31 +132,34 @@ export const createVenta = async (ventaData) => {
     nuevoError.status = error.response?.status;
     nuevoError.data = error.response?.data;
     
-    throw nuevoError;
+    // Manejar errores de autenticación
+    return handleAuthError(nuevoError);
   }
 };
 
 // Actualizar stock de un producto
 export const actualizarStock = async (idProducto, cantidadVendida) => {
   try {
+    // ✅ AGREGAR /api/
     const response = await api.put(
-      `/productos/${idProducto}/actualizar-stock`,
+      `/api/productos/${idProducto}/actualizar-stock`,
       { cantidadVendida }
     );
     return response.data;
   } catch (error) {
     console.error("Error al actualizar stock:", error);
-    throw error;
+    return handleAuthError(error);
   }
 };
 
 // Eliminar una venta
 export const eliminarVenta = async (ventaId) => {
   try {
-    const response = await api.delete(`/ventas/${ventaId}`);
+    // ✅ AGREGAR /api/
+    const response = await api.delete(`/api/ventas/${ventaId}`);
     return response.data;
   } catch (error) {
     console.error("Error al eliminar la venta:", error);
-    throw error;
+    return handleAuthError(error);
   }
 };
