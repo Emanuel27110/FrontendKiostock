@@ -15,6 +15,7 @@ import axios from "axios";
 import './embutidosUser.css'
 import { imprimirTicketEmbutidos } from "./ticketEmbutidosService.js";
 import { API_ENDPOINTS } from '../../config/api.js';
+import { api } from '../../config/api.js';
 
 const EmbutidosUser = () => {
   const [embutidos, setEmbutidos] = useState([]);
@@ -153,9 +154,7 @@ const EmbutidosUser = () => {
   // Función para obtener el perfil del usuario actual
   const obtenerPerfilUsuario = async () => {
     try {
-      const response = await axios.get(`${API_ENDPOINTS.PROFILE}`, {
-        withCredentials: true
-      });
+    const response = await api.get('/api/profile');
       setUsuarioActual(response.data);
       
       // Inicializar el campo vendedor con el nombre del usuario actual

@@ -1,79 +1,131 @@
-import axios from "axios";
+// embutidosService.js
+import { api } from '../../config/api.js';
+import { API_ENDPOINTS } from '../../config/api.js';
 
-import { API_URL, API_ENDPOINTS } from '../../config/api.js';
 const VENTAS_URL = API_ENDPOINTS.VENTAS_EMBUTIDOS;
 
-// Configuración con el token para autenticación
-const config = {
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem("token")}`,
-  },
+// Manejar errores de autenticación (igual que en bajasService)
+const handleAuthError = (error) => {
+  if (error.response && error.response.status === 401) {
+    console.error('Error de autenticación. Sesión expirada.');
+    // El interceptor de axios ya maneja la redirección, pero podemos agregar un backup
+    if (!window.location.pathname.includes('/login')) {
+      setTimeout(() => {
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+      }, 1000);
+    }
+  }
+  throw error;
 };
 
 // Obtener todos los embutidos
 export const obtenerEmbutidos = async () => {
-  const response = await axios.get(`${API_URL}/embutidos`, config);
-  return response.data;
+  try {
+    const response = await api.get('/api/embutidos');
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener embutidos:', error);
+    return handleAuthError(error);
+  }
 };
 
 // Agregar un nuevo embutido
 export const agregarEmbutido = async (embutido) => {
-  const response = await axios.post(`${API_URL}/embutidos`, embutido, config);
-  return response.data;
+  try {
+    const response = await api.post('/api/embutidos', embutido);
+    return response.data;
+  } catch (error) {
+    console.error('Error al agregar embutido:', error);
+    return handleAuthError(error);
+  }
 };
 
 // Actualizar el stock de un embutido
 export const actualizarStock = async (id, cantidad) => {
-  const response = await axios.put(
-    `${API_URL}/embutidos/${id}/actualizar-stock`,
-    { cantidad },
-    config
-  );
-  return response.data;
-};
+  try {
+    const response = await api.put(
+      `/api/embutidos/${id}/actualizar-stock`,
+      { cantidad }
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error al actualizar stock:', error);
+    return handleAuthError(error);
+  }
+}; 
 
 // Vender por gramos - usando la ruta correcta del backend
 export const venderPorGramos = async (embutidoId, cantidadGramos, vendedor) => {
-  const response = await axios.post(
-    VENTAS_URL,
-    {
-      embutidoId,
-      vendedor,
-      cantidadGramos
-    },
-    config
-  );
-  return response.data;
+  try {
+    const response = await api.post(
+      '/api/ventas-embutidos',
+      {
+        embutidoId,
+        vendedor,
+        cantidadGramos
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error al vender por gramos:', error);
+    return handleAuthError(error);
+  }
 };
 
 // Obtener todas las ventas realizadas
 export const obtenerVentas = async () => {
-  const response = await axios.get(VENTAS_URL, config);
-  return response.data;
+  try {
+    const response = await api.get('/api/ventas-embutidos');
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener ventas:', error);
+    return handleAuthError(error);
+  }
 };
 
 // Obtener ventas por fecha
 export const obtenerVentasPorFecha = async (fecha) => {
-  const response = await axios.get(`${VENTAS_URL}/fecha/${fecha}`, config);
-  return response.data;
+  try {
+    const response = await api.get(`/api/ventas-embutidos/fecha/${fecha}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener ventas por fecha:', error);
+    return handleAuthError(error);
+  }
 };
 
 // Eliminar un embutido
 export const eliminarEmbutido = async (id) => {
-  const response = await axios.delete(`${API_URL}/embutidos/${id}`, config);
-  return response.data;
+  try {
+    const response = await api.delete(`/api/embutidos/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error al eliminar embutido:', error);
+    return handleAuthError(error);
+  }
 };
 
 // Eliminar una venta realizada
 export const eliminarVenta = async (id) => {
-  const response = await axios.delete(`${VENTAS_URL}/${id}`, config);
-  return response.data;
+  try {
+    const response = await api.delete(`/api/ventas-embutidos/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error al eliminar venta:', error);
+    return handleAuthError(error);
+  }
 };
 
 // Actualizar embutido
 export const actualizarEmbutido = async (id, datosActualizados) => {
-  const response = await axios.put(`${API_URL}/embutidos/${id}`, datosActualizados, config);
-  return response.data;
+  try {
+    const response = await api.put(`/api/embutidos/${id}`, datosActualizados);
+    return response.data;
+  } catch (error) {
+    console.error('Error al actualizar embutido:', error);
+    return handleAuthError(error);
+  }
 };
 
 export default {
