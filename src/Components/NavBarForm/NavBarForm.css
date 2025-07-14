@@ -187,45 +187,6 @@ main.nav-scrolled {
   padding-top: 65px;
 }
 
-/* Responsivo mejorado */
-@media (max-width: 768px) {
-  nav {
-    padding: 15px;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  nav .logo {
-    margin-bottom: 15px;
-  }
-  
-  nav ul {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-  }
-  
-  nav ul li {
-    width: 100%;
-  }
-  
-  nav ul li a, 
-  nav ul li button {
-    display: block;
-    width: 100%;
-    text-align: left;
-  }
-  
-  nav ul li:last-child {
-    margin-left: 0;
-    margin-top: 15px;
-  }
-  
-  main {
-    padding-top: 150px;
-  }
-}
-
 /* Menú hamburguesa para móvil */
 .menu-toggle {
   display: none;
@@ -237,16 +198,205 @@ main.nav-scrolled {
   color: var(--text-color);
 }
 
+/* Estilos responsivos mejorados */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
+  nav {
+    padding: 12px 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  nav.scrolled {
+    padding: 8px 20px;
+  }
+  
+  nav .logo {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+  }
+  
+  nav .logo span {
+    font-size: 1.8rem;
+    margin-right: 8px;
   }
   
   nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  nav ul li {
+    flex: 0 0 auto;
+  }
+  
+  nav ul li a,
+  nav ul li button {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  
+  nav ul li button {
+    background-color: rgba(231, 76, 60, 0.9);
+    margin: 0;
+  }
+  
+  nav ul li:last-child {
+    margin-left: 0;
+  }
+  
+  main {
+    padding-top: 100px;
+  }
+  
+  main.nav-scrolled {
+    padding-top: 85px;
+  }
+}
+
+/* Dispositivos muy pequeños (teléfonos en orientación vertical) */
+@media (max-width: 480px) {
+  nav {
+    padding: 10px 15px;
+    gap: 12px;
+  }
+  
+  nav.scrolled {
+    padding: 6px 15px;
+  }
+  
+  nav .logo {
+    font-size: 1.2rem;
+  }
+  
+  nav .logo span {
+    font-size: 1.6rem;
+    margin-right: 6px;
+  }
+  
+  nav ul {
+    gap: 6px;
+  }
+  
+  nav ul li a,
+  nav ul li button {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+  
+  main {
+    padding-top: 90px;
+  }
+  
+  main.nav-scrolled {
+    padding-top: 75px;
+  }
+}
+
+/* Para pantallas muy pequeñas - layout vertical */
+@media (max-width: 360px) {
+  nav ul {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  nav ul li {
+    width: auto;
+  }
+  
+  nav ul li a,
+  nav ul li button {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    min-width: 120px;
+    text-align: center;
+  }
+  
+  main {
+    padding-top: 120px;
+  }
+  
+  main.nav-scrolled {
+    padding-top: 100px;
+  }
+}
+
+/* Orientación horizontal en móviles */
+@media (max-height: 600px) and (orientation: landscape) {
+  nav {
+    padding: 8px 15px;
+    gap: 10px;
+  }
+  
+  nav .logo {
+    font-size: 1.1rem;
+  }
+  
+  nav .logo span {
+    font-size: 1.4rem;
+  }
+  
+  nav ul li a,
+  nav ul li button {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  
+  main {
+    padding-top: 70px;
+  }
+}
+
+/* Orientación horizontal en móviles */
+@media (max-height: 600px) and (orientation: landscape) {
+  nav ul {
+    padding: 60px 0 10px 0;
+  }
+  
+  nav ul li a,
+  nav ul li button {
+    padding: 12px 20px;
+  }
+  
+  nav ul li button {
+    margin: 10px 20px 0 20px;
+  }
+}
+
+/* Mejoras para pantallas táctiles */
+@media (hover: none) and (pointer: coarse) {
+  nav ul li a:hover,
+  nav ul li button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  nav ul li a:active,
+  nav ul li button:active {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Accesibilidad mejorada */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Ocultar elementos no esenciales en pantallas muy pequeñas */
+@media (max-width: 320px) {
+  nav .logo span {
     display: none;
   }
   
-  nav.menu-open ul {
-    display: flex;
+  nav .logo {
+    font-size: 1.1rem;
   }
 }
