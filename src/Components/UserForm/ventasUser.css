@@ -1,201 +1,205 @@
 /* Contenedor principal */
 .ventas-container {
-    margin-top: 80px;
-    padding: 40px;
-    background-color: #fafafa;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Títulos de secciones */
-  .section-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
-  .section-title i {
-    margin-right: 8px;
-    font-size: 1.5rem;
-  }
-  
-  /* Estilos generales del formulario */
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  input,
-  select {
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    width: 100%;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-  }
-  
-  input:focus,
-  select:focus {
-    border-color: #ffcc00;
-    outline: none;
-    box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
-  }
-  
-  button {
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  button:hover {
-    background-color: #ffcc00;
-    color: #fff;
-    transform: translateY(-3px);
-  }
-  
-  button:active {
-    transform: translateY(1px);
-  }
-  
-  /* Estilo de los botones primarios */
-  .btn-primary {
-    background-color: #ffcc00;
-    color: #333;
-    border: none;
-  }
-  
-  .btn-primary:hover {
-    background-color: #e6b800;
-  }
-  
-  /* Estilo de los botones secundarios */
-  .btn-secondary {
-    background-color: transparent;
-    border: 1px solid #ffcc00;
-    color: #ffcc00;
-    font-weight: bold;
-    border-radius: 30px;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #ffcc00;
-    color: #333;
-    transform: scale(1.1);
-  }
-  
-  /* Diseño de los productos */
-  .productos-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .producto-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    width: 200px;
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.3s ease;
-  }
-  
-  .producto-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .producto-card h5 {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  .producto-card p {
-    font-size: 1rem;
-    color: #777;
-  }
-  
-  .producto-card button {
-    width: 100%;
-    background-color: #ffcc00;
-    border: none;
-    padding: 10px;
-    color: #fff;
-    font-weight: bold;
-    transition: transform 0.2s ease;
-  }
-  
-  .producto-card button:hover {
-    transform: translateY(-3px);
-  }
-  
-  /* Estilos para la tabla de ventas */
-  .ventas-table-container {
-    margin-top: 30px;
-    overflow-x: auto;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  th,
-  td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  th {
-    background-color: #f7f7f7;
-    font-weight: bold;
-  }
-  
-  tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  td {
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  /* Estilo para las imágenes en las ventas */
-  .producto-imagen-venta {
-    width: 50px; /* Ajusta el tamaño de las imágenes */
-    height: 50px; /* Asegura que las imágenes tengan un tamaño adecuado */
-    object-fit: cover;
-    border-radius: 8px;
-    margin-right: 10px;
-  }
-  
-  /* Ajustes de íconos dentro de los botones */
-  section-title i,
-  button i {
-    margin-right: 8px; /* Espacio entre íconos y texto */
-    font-size: 1.2rem;
-  }
-  
-  /* Cambiar color de íconos en botones */
-  button .btn-primary i,
-  button .btn-secondary i {
-    color: #fff;
-  }
-  
-  button .btn-primary:hover i,
-  button .btn-secondary:hover i {
-    color: #333;
-  }
-  /* Estilos para el contenedor de la barra de búsqueda */
+  margin-top: 80px;
+  padding: 40px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos de secciones */
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-title i {
+  margin-right: 8px;
+  font-size: 1.5rem;
+}
+
+/* Estilos generales del formulario */
+.form-group {
+  margin-bottom: 20px;
+}
+
+input,
+select {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus {
+  border-color: #ffcc00;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+}
+
+button {
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #ffcc00;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* Estilo de los botones primarios */
+.btn-primary {
+  background-color: #ffcc00;
+  color: #333;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #e6b800;
+}
+
+/* Estilo de los botones secundarios */
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid #ffcc00;
+  color: #ffcc00;
+  font-weight: bold;
+  border-radius: 30px;
+}
+
+.btn-secondary:hover {
+  background-color: #ffcc00;
+  color: #333;
+  transform: scale(1.1);
+}
+
+/* Diseño de los productos */
+.productos-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.producto-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  width: 200px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+}
+
+.producto-card h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.producto-card p {
+  font-size: 1rem;
+  color: #777;
+}
+
+.producto-card button {
+  width: 100%;
+  background-color: #ffcc00;
+  border: none;
+  padding: 10px;
+  color: #fff;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.producto-card button:hover {
+  transform: translateY(-3px);
+}
+
+/* Estilos para la tabla de ventas */
+.ventas-table-container {
+  margin-top: 30px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  min-width: 600px;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f7f7f7;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+td {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Estilo para las imágenes en las ventas */
+.producto-imagen-venta {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+/* Ajustes de íconos dentro de los botones */
+section-title i,
+button i {
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+/* Cambiar color de íconos en botones */
+button .btn-primary i,
+button .btn-secondary i {
+  color: #fff;
+}
+
+button .btn-primary:hover i,
+button .btn-secondary:hover i {
+  color: #333;
+}
+
+/* Estilos para el contenedor de la barra de búsqueda */
 .buscador-container {
   display: flex;
   align-items: center;
@@ -220,6 +224,7 @@
   font-size: 16px;
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
 }
 
 .buscador-input:focus {
@@ -267,6 +272,7 @@
   margin: 15px 0;
   border: 1px dashed #ccc;
 }
+
 /* Estilos para la paginación */
 .pagination-container {
   display: flex;
@@ -352,4 +358,393 @@
   height: 36px;
   font-weight: bold;
   color: #666;
+}
+
+/* OPTIMIZACIONES MÓVILES */
+/* Tablets (768px y menos) */
+@media screen and (max-width: 768px) {
+  .ventas-container {
+    margin-top: 60px;
+    padding: 25px 20px;
+  }
+  
+  .section-title {
+    font-size: 1.7rem;
+    margin-bottom: 15px;
+  }
+  
+  .section-title i {
+    font-size: 1.3rem;
+  }
+  
+  .productos-list {
+    gap: 15px;
+  }
+  
+  .producto-card {
+    width: calc(50% - 10px);
+    min-width: 150px;
+    padding: 15px;
+  }
+  
+  .producto-card h5 {
+    font-size: 1.1rem;
+  }
+  
+  .producto-card p {
+    font-size: 0.9rem;
+  }
+  
+  .buscador-container {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+  
+  .btn-limpiar {
+    width: 100%;
+    padding: 12px;
+  }
+  
+  .pagination-container {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+  
+  .pagination-info {
+    text-align: center;
+  }
+  
+  .pagination-pages {
+    gap: 8px;
+  }
+  
+  .pagination-number {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+  
+  /* Tabla más compacta en tablets */
+  th, td {
+    padding: 8px 4px;
+    font-size: 0.9rem;
+  }
+  
+  .producto-imagen-venta {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Móviles (480px y menos) */
+@media screen and (max-width: 480px) {
+  .ventas-container {
+    margin-top: 50px;
+    padding: 20px 15px;
+    border-radius: 6px;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+  
+  .section-title i {
+    font-size: 1.2rem;
+    margin-right: 6px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  input, select {
+    padding: 14px 12px;
+    font-size: 16px; /* Evita zoom en iOS */
+  }
+  
+  button {
+    padding: 14px 20px;
+    font-size: 0.95rem;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .productos-list {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .producto-card {
+    width: 100%;
+    padding: 15px;
+  }
+  
+  .producto-card h5 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  
+  .producto-card p {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+  
+  .producto-card button {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+  
+  .buscador-container {
+    flex-direction: column;
+    gap: 12px;
+    max-width: 100%;
+  }
+  
+  .buscador-input {
+    padding: 14px 15px 14px 40px;
+    font-size: 16px;
+  }
+  
+  .search-icon {
+    font-size: 16px;
+  }
+  
+  .btn-limpiar {
+    padding: 14px;
+    font-size: 15px;
+  }
+  
+  .no-resultados {
+    padding: 15px;
+    font-size: 14px;
+  }
+  
+  /* Tabla responsive para móviles */
+  .ventas-table-container {
+    margin-top: 20px;
+  }
+  
+  table {
+    font-size: 0.8rem;
+    min-width: 500px;
+  }
+  
+  th, td {
+    padding: 6px 3px;
+    font-size: 0.8rem;
+  }
+  
+  .producto-imagen-venta {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+  }
+  
+  /* Paginación móvil */
+  .pagination-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .pagination-button {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+    justify-content: center;
+  }
+  
+  .pagination-info {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+  
+  .pagination-pages {
+    gap: 4px;
+  }
+  
+  .pagination-number {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+  
+  .pagination-ellipsis {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Móviles muy pequeños (320px y menos) */
+@media screen and (max-width: 320px) {
+  .ventas-container {
+    padding: 15px 10px;
+  }
+  
+  .section-title {
+    font-size: 1.3rem;
+  }
+  
+  .section-title i {
+    font-size: 1.1rem;
+  }
+  
+  input, select {
+    padding: 12px 10px;
+  }
+  
+  button {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .producto-card {
+    padding: 12px;
+  }
+  
+  .buscador-input {
+    padding: 12px 12px 12px 35px;
+  }
+  
+  .search-icon {
+    left: 10px;
+    font-size: 14px;
+  }
+  
+  .btn-limpiar {
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  table {
+    font-size: 0.7rem;
+  }
+  
+  th, td {
+    padding: 4px 2px;
+  }
+  
+  .producto-imagen-venta {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .pagination-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+  
+  .pagination-ellipsis {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Optimización para orientación landscape en móviles */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .ventas-container {
+    margin-top: 40px;
+    padding: 15px;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 12px;
+  }
+  
+  .productos-list {
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .producto-card {
+    width: calc(33.33% - 7px);
+    min-width: 120px;
+    padding: 10px;
+  }
+  
+  .pagination-container {
+    flex-direction: row;
+    gap: 10px;
+  }
+}
+
+/* Mejoras para accesibilidad táctil */
+@media (pointer: coarse) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .pagination-number {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  input, select {
+    min-height: 44px;
+  }
+  
+  .btn-limpiar {
+    min-height: 44px;
+  }
+}
+
+/* Mejoras para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .ventas-container {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+  
+  .section-title {
+    color: #ffffff;
+  }
+  
+  input, select {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border-color: #404040;
+  }
+  
+  .producto-card {
+    background-color: #2d2d2d;
+    color: #ffffff;
+  }
+  
+  th {
+    background-color: #2d2d2d;
+    color: #ffffff;
+  }
+  
+  tr:hover {
+    background-color: #404040;
+  }
+  
+  .no-resultados {
+    background-color: #2d2d2d;
+    color: #cccccc;
+    border-color: #404040;
+  }
+}
+
+/* Optimización para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .section-title,
+  .producto-card h5,
+  button {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .producto-imagen-venta {
+    image-rendering: -webkit-optimize-contrast;
+  }
 }

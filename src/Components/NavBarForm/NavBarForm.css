@@ -203,12 +203,21 @@ main.nav-scrolled {
   nav {
     padding: 12px 20px;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 15px;
+    min-height: 70px;
   }
   
   nav.scrolled {
     padding: 8px 20px;
+    min-height: 60px;
+  }
+  
+  /* Contenedor del logo centrado */
+  .nav-header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
   
   nav .logo {
@@ -227,6 +236,7 @@ main.nav-scrolled {
     justify-content: center;
     gap: 8px;
     width: 100%;
+    margin: 0;
   }
   
   nav ul li {
@@ -238,6 +248,10 @@ main.nav-scrolled {
     padding: 10px 12px;
     font-size: 0.9rem;
     white-space: nowrap;
+    min-height: 44px; /* Mejor área táctil */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   nav ul li button {
@@ -247,6 +261,46 @@ main.nav-scrolled {
   
   nav ul li:last-child {
     margin-left: 0;
+  }
+  
+  main {
+    padding-top: 110px;
+  }
+  
+  main.nav-scrolled {
+    padding-top: 95px;
+  }
+}
+
+/* Dispositivos móviles medianos */
+@media (max-width: 600px) {
+  nav {
+    padding: 10px 15px;
+    gap: 12px;
+  }
+  
+  nav.scrolled {
+    padding: 6px 15px;
+  }
+  
+  nav .logo {
+    font-size: 1.3rem;
+  }
+  
+  nav .logo span {
+    font-size: 1.7rem;
+    margin-right: 6px;
+  }
+  
+  nav ul {
+    gap: 6px;
+  }
+  
+  nav ul li a,
+  nav ul li button {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    min-height: 40px;
   }
   
   main {
@@ -261,12 +315,12 @@ main.nav-scrolled {
 /* Dispositivos muy pequeños (teléfonos en orientación vertical) */
 @media (max-width: 480px) {
   nav {
-    padding: 10px 15px;
-    gap: 12px;
+    padding: 8px 12px;
+    gap: 10px;
   }
   
   nav.scrolled {
-    padding: 6px 15px;
+    padding: 5px 12px;
   }
   
   nav .logo {
@@ -275,62 +329,84 @@ main.nav-scrolled {
   
   nav .logo span {
     font-size: 1.6rem;
-    margin-right: 6px;
+    margin-right: 5px;
   }
   
   nav ul {
-    gap: 6px;
+    gap: 4px;
   }
   
   nav ul li a,
   nav ul li button {
-    padding: 8px 10px;
-    font-size: 0.85rem;
+    padding: 6px 8px;
+    font-size: 0.8rem;
+    min-height: 38px;
   }
   
   main {
-    padding-top: 90px;
+    padding-top: 95px;
   }
   
   main.nav-scrolled {
-    padding-top: 75px;
+    padding-top: 80px;
   }
 }
 
-/* Para pantallas muy pequeñas - layout vertical */
+/* Para pantallas muy pequeñas - layout vertical optimizado */
 @media (max-width: 360px) {
+  nav {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+  
+  nav .logo {
+    font-size: 1.1rem;
+  }
+  
+  nav .logo span {
+    font-size: 1.4rem;
+    margin-right: 4px;
+  }
+  
   nav ul {
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     align-items: center;
+    width: 100%;
   }
   
   nav ul li {
-    width: auto;
+    width: 100%;
+    max-width: 200px;
   }
   
   nav ul li a,
   nav ul li button {
-    padding: 10px 16px;
-    font-size: 0.9rem;
-    min-width: 120px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    min-height: 40px;
+    width: 100%;
     text-align: center;
+    justify-content: center;
   }
   
   main {
-    padding-top: 120px;
+    padding-top: 140px;
   }
   
   main.nav-scrolled {
-    padding-top: 100px;
+    padding-top: 125px;
   }
 }
 
 /* Orientación horizontal en móviles */
 @media (max-height: 600px) and (orientation: landscape) {
   nav {
-    padding: 8px 15px;
-    gap: 10px;
+    padding: 6px 15px;
+    gap: 8px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
   
   nav .logo {
@@ -341,30 +417,25 @@ main.nav-scrolled {
     font-size: 1.4rem;
   }
   
+  nav ul {
+    flex-direction: row;
+    gap: 8px;
+    width: auto;
+  }
+  
   nav ul li a,
   nav ul li button {
-    padding: 6px 10px;
+    padding: 4px 8px;
     font-size: 0.8rem;
+    min-height: 32px;
   }
   
   main {
-    padding-top: 70px;
-  }
-}
-
-/* Orientación horizontal en móviles */
-@media (max-height: 600px) and (orientation: landscape) {
-  nav ul {
-    padding: 60px 0 10px 0;
+    padding-top: 50px;
   }
   
-  nav ul li a,
-  nav ul li button {
-    padding: 12px 20px;
-  }
-  
-  nav ul li button {
-    margin: 10px 20px 0 20px;
+  main.nav-scrolled {
+    padding-top: 45px;
   }
 }
 
@@ -373,11 +444,19 @@ main.nav-scrolled {
   nav ul li a:hover,
   nav ul li button:hover {
     background-color: rgba(255, 255, 255, 0.1);
+    transform: none;
   }
   
   nav ul li a:active,
   nav ul li button:active {
     background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(0.95);
+  }
+  
+  /* Mejor feedback táctil */
+  nav ul li a,
+  nav ul li button {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -388,6 +467,10 @@ main.nav-scrolled {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+  
+  nav .logo:hover span {
+    transform: none;
+  }
 }
 
 /* Ocultar elementos no esenciales en pantallas muy pequeñas */
@@ -397,6 +480,60 @@ main.nav-scrolled {
   }
   
   nav .logo {
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+  
+  nav {
+    padding: 6px 8px;
+  }
+  
+  nav ul li a,
+  nav ul li button {
+    font-size: 0.75rem;
+    padding: 6px 8px;
+  }
+}
+
+/* Mejoras adicionales para iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  nav ul li a,
+  nav ul li button {
+    -webkit-appearance: none;
+    border-radius: 6px;
+  }
+}
+
+/* Prevenir zoom en inputs en iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select, textarea, input[type="text"], input[type="password"], 
+  input[type="datetime"], input[type="datetime-local"], 
+  input[type="date"], input[type="month"], input[type="time"], 
+  input[type="week"], input[type="number"], input[type="email"], 
+  input[type="url"], input[type="search"], input[type="tel"], 
+  input[type="color"] {
+    font-size: 16px;
+  }
+}
+
+/* Mejoras para dispositivos con notch */
+@supports (padding: max(0px)) {
+  nav {
+    padding-left: max(30px, env(safe-area-inset-left));
+    padding-right: max(30px, env(safe-area-inset-right));
+  }
+  
+  @media (max-width: 768px) {
+    nav {
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
+    }
+  }
+}
+
+/* Mejora para dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #1a252f;
+    --shadow-color: rgba(0, 0, 0, 0.4);
   }
 }

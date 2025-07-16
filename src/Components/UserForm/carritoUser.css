@@ -1,4 +1,4 @@
-/* Estilo para el modal del carrito */
+/* Estilo para el modal del carrito - Versión optimizada para móviles */
 .carrito-modal {
     position: fixed;
     top: 0;
@@ -10,53 +10,66 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-  }
-  
-  /* Contenido del modal */
-  .carrito-contenido {
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Contenido del modal */
+.carrito-contenido {
     background-color: white;
     padding: 30px;
     border-radius: 12px;
-    width: 400px;
-    max-height: 80vh; /* Evita que se extienda fuera de la pantalla */
-    overflow-y: auto; /* Agrega scroll si el contenido es demasiado largo */
+    width: 100%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Título centrado y destacado */
-  .carrito-contenido h3 {
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Título centrado y destacado */
+.carrito-contenido h3 {
     text-align: center;
     margin-bottom: 25px;
     font-size: 1.5rem;
     color: #333;
-  }
-  
-  /* Lista de productos */
-  .carrito-contenido ul {
+    margin-top: 0;
+}
+
+/* Lista de productos */
+.carrito-contenido ul {
     list-style-type: none;
     padding: 0;
-  }
-  
-  /* Elementos de la lista */
-  .carrito-contenido li {
+    margin: 0;
+}
+
+/* Elementos de la lista */
+.carrito-contenido li {
     margin-bottom: 15px;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #f9f9f9;
-  }
-  
-  /* Texto del producto */
-  .carrito-contenido li strong {
+    transition: background-color 0.3s ease;
+}
+
+.carrito-contenido li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Texto del producto */
+.carrito-contenido li strong {
     font-weight: bold;
     color: #555;
-  }
-  
-  /* Botón de cerrar */
-  .carrito-contenido .btn-close {
+    flex: 1;
+}
+
+/* Botón de cerrar */
+.carrito-contenido .btn-close {
     display: block;
     margin: 20px auto 0;
     padding: 12px 25px;
@@ -66,44 +79,354 @@
     border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
-  }
-  
-  /* Hover para el botón */
-  .carrito-contenido .btn-close:hover {
+    transition: background-color 0.3s ease;
+    min-height: 44px;
+    touch-action: manipulation;
+}
+
+/* Hover para el botón */
+.carrito-contenido .btn-close:hover {
     background-color: #e53935;
-  }
-  
-  /* Contenedor para botones adicionales */
-  .botones-container {
+}
+
+/* Contenedor para botones adicionales */
+.botones-container {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espaciado vertical entre botones */
-  }
-  
-  /* Espacio entre botones en línea */
-  .btn-primary:first-of-type {
-    margin-right: 20px; /* Espacio horizontal entre botones */
-  }
-  
-  /* Espaciado extra en el total */
-  .carrito-contenido ul li:last-child {
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Espaciado extra en el total */
+.carrito-contenido ul li:last-child {
     font-size: 1.2rem;
     font-weight: bold;
     margin-top: 15px;
     text-align: center;
-  }
-  
-  /* Scroll bar personalizado (opcional) */
-  .carrito-contenido::-webkit-scrollbar {
+    background-color: #e8f5e8;
+    border-color: #4caf50;
+}
+
+/* Scroll bar personalizado */
+.carrito-contenido::-webkit-scrollbar {
     width: 8px;
-  }
-  
-  .carrito-contenido::-webkit-scrollbar-thumb {
+}
+
+.carrito-contenido::-webkit-scrollbar-thumb {
     background-color: #ccc;
     border-radius: 4px;
-  }
-  
-  .carrito-contenido::-webkit-scrollbar-thumb:hover {
+}
+
+.carrito-contenido::-webkit-scrollbar-thumb:hover {
     background-color: #aaa;
-  }
-  
+}
+
+/* Botones primarios */
+.btn-primary {
+    padding: 12px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    min-height: 44px;
+    touch-action: manipulation;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+/* ====== RESPONSIVE DESIGN ====== */
+
+/* Tablets pequeñas y móviles grandes */
+@media (max-width: 768px) {
+    .carrito-modal {
+        padding: 15px;
+        align-items: flex-start;
+        padding-top: 50px;
+    }
+    
+    .carrito-contenido {
+        max-width: 100%;
+        padding: 25px;
+        max-height: 85vh;
+        border-radius: 10px;
+    }
+    
+    .carrito-contenido h3 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+    
+    .carrito-contenido li {
+        padding: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .carrito-contenido li strong {
+        font-size: 0.95rem;
+    }
+    
+    .botones-container {
+        gap: 12px;
+    }
+    
+    .btn-primary,
+    .carrito-contenido .btn-close {
+        padding: 14px 20px;
+        font-size: 1rem;
+        width: 100%;
+    }
+}
+
+/* Móviles grandes */
+@media (max-width: 480px) {
+    .carrito-modal {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 30px;
+    }
+    
+    .carrito-contenido {
+        padding: 20px;
+        max-height: 90vh;
+        border-radius: 8px;
+    }
+    
+    .carrito-contenido h3 {
+        font-size: 1.3rem;
+        margin-bottom: 18px;
+    }
+    
+    .carrito-contenido li {
+        padding: 10px;
+        margin-bottom: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    
+    .carrito-contenido li strong {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    .carrito-contenido ul li:last-child {
+        font-size: 1.1rem;
+        margin-top: 12px;
+        padding: 15px;
+    }
+    
+    .botones-container {
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .btn-primary,
+    .carrito-contenido .btn-close {
+        padding: 12px 18px;
+        font-size: 0.95rem;
+        min-height: 48px;
+    }
+    
+    /* Scroll bar más grueso para móviles */
+    .carrito-contenido::-webkit-scrollbar {
+        width: 12px;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 360px) {
+    .carrito-modal {
+        padding: 8px;
+        padding-top: 20px;
+    }
+    
+    .carrito-contenido {
+        padding: 15px;
+        max-height: 92vh;
+        border-radius: 6px;
+    }
+    
+    .carrito-contenido h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .carrito-contenido li {
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+    }
+    
+    .carrito-contenido li strong {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+    
+    .carrito-contenido ul li:last-child {
+        font-size: 1rem;
+        padding: 12px;
+    }
+    
+    .btn-primary,
+    .carrito-contenido .btn-close {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        min-height: 44px;
+    }
+    
+    .botones-container {
+        gap: 8px;
+        margin-top: 12px;
+    }
+}
+
+/* Orientación horizontal en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+    .carrito-modal {
+        padding-top: 20px;
+    }
+    
+    .carrito-contenido {
+        max-height: 95vh;
+    }
+    
+    .carrito-contenido li {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .botones-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .btn-primary,
+    .carrito-contenido .btn-close {
+        flex: 1;
+        min-width: 120px;
+    }
+}
+
+/* Mejoras para dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+    .carrito-contenido li:hover {
+        background-color: #f9f9f9;
+    }
+    
+    .carrito-contenido .btn-close:hover,
+    .btn-primary:hover {
+        background-color: #f44336;
+    }
+    
+    .btn-primary:hover {
+        background-color: #4caf50;
+    }
+    
+    /* Aumentar área de toque */
+    .carrito-contenido li {
+        min-height: 60px;
+    }
+}
+
+/* Modo oscuro (opcional) */
+@media (prefers-color-scheme: dark) {
+    .carrito-contenido {
+        background-color: #2d2d2d;
+        color: #ffffff;
+    }
+    
+    .carrito-contenido h3 {
+        color: #ffffff;
+    }
+    
+    .carrito-contenido li {
+        background-color: #3d3d3d;
+        border-color: #555;
+    }
+    
+    .carrito-contenido li:hover {
+        background-color: #4d4d4d;
+    }
+    
+    .carrito-contenido li strong {
+        color: #cccccc;
+    }
+    
+    .carrito-contenido ul li:last-child {
+        background-color: #1a4d1a;
+        border-color: #4caf50;
+    }
+}
+
+/* Accesibilidad mejorada */
+@media (prefers-reduced-motion: reduce) {
+    .carrito-contenido li,
+    .carrito-contenido .btn-close,
+    .btn-primary {
+        transition: none;
+    }
+}
+
+/* Mejoras para pantallas muy altas */
+@media (min-height: 800px) {
+    .carrito-contenido {
+        max-height: 70vh;
+    }
+}
+
+/* Mejoras para pantallas muy anchas en móviles */
+@media (min-width: 480px) and (max-width: 768px) {
+    .carrito-contenido {
+        max-width: 500px;
+    }
+    
+    .carrito-contenido li {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .botones-container {
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    .btn-primary,
+    .carrito-contenido .btn-close {
+        flex: 1;
+    }
+}
+
+/* Animación suave para la apertura del modal */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.carrito-contenido {
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Mejoras específicas para iOS */
+@supports (-webkit-touch-callout: none) {
+    .carrito-contenido {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .btn-primary,
+    .carrito-contenido .btn-close {
+        -webkit-appearance: none;
+    }
+}

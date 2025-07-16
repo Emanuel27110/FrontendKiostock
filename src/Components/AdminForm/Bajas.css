@@ -495,38 +495,500 @@ h3 {
   animation: fadeIn 0.4s ease-out;
 }
 
-/* Responsive */
+/* RESPONSIVE MEJORADO PARA MÓVILES */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .botones-accion {
+    justify-content: center;
+  }
+  
+  .btn-exportar, .btn-estadisticas {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .estadisticas-cards {
+    justify-content: center;
+  }
+  
+  .estadistica-card {
+    min-width: 280px;
+  }
+}
+
+/* Móviles grandes */
 @media (max-width: 768px) {
   .bajas-container {
-    padding: 15px;
+    padding: 20px;
+  }
+  
+  .bajas-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .bajas-container h2 {
+    font-size: 20px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+  
+  h3 {
+    font-size: 16px;
   }
   
   .form-baja-container form {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .estadisticas-container {
+    padding: 20px;
   }
   
   .estadisticas-cards {
     flex-direction: column;
+    gap: 15px;
+  }
+  
+  .estadistica-card {
+    min-width: auto;
+    padding: 15px;
+  }
+  
+  .estadistica-card .valor {
+    font-size: 24px;
+  }
+  
+  .productos-mas-bajas {
+    padding: 15px;
   }
   
   .botones-accion {
     flex-direction: column;
+    gap: 10px;
   }
   
   .btn-exportar, .btn-estadisticas {
     width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    justify-content: center;
   }
   
   .tabla-bajas th,
   .tabla-bajas td {
-    padding: 10px;
+    padding: 12px 10px;
+    font-size: 14px;
   }
   
   .descripcion-celda {
     max-width: 150px;
   }
   
+  .acciones-container {
+    gap: 5px;
+  }
+  
+  .btn-editar, .btn-eliminar {
+    width: 34px;
+    height: 34px;
+  }
+  
   .paginacion {
     flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .pagina {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .chips-container {
+    gap: 8px;
+  }
+  
+  .chip {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Móviles medianos */
+@media (max-width: 480px) {
+  .bajas-container {
+    padding: 15px;
+  }
+  
+  .bajas-container h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  
+  .bajas-container h1::after {
+    width: 60px;
+    height: 2px;
+  }
+  
+  .bajas-container h2 {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+  }
+  
+  h3 {
+    font-size: 15px;
+  }
+  
+  .input-busqueda-container input {
+    padding: 10px 12px 10px 40px;
+    font-size: 14px;
+  }
+  
+  .icono-busqueda {
+    left: 12px;
+  }
+  
+  .estadisticas-container {
+    padding: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .estadistica-card {
+    padding: 12px;
+  }
+  
+  .estadistica-card h3 {
+    font-size: 14px;
+  }
+  
+  .estadistica-card .valor {
+    font-size: 20px;
+  }
+  
+  .productos-mas-bajas {
+    padding: 12px;
+  }
+  
+  .productos-mas-bajas h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .productos-mas-bajas th,
+  .productos-mas-bajas td {
+    padding: 8px 6px;
+    font-size: 13px;
+  }
+  
+  .form-baja-container {
+    padding: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .form-baja-container form {
+    gap: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .form-group textarea {
+    min-height: 100px;
+  }
+  
+  .btn-registrar {
+    padding: 12px 20px;
+    font-size: 14px;
+    max-width: 250px;
+  }
+  
+  .btn-exportar, .btn-estadisticas {
+    padding: 8px 15px;
+    font-size: 14px;
+    gap: 8px;
+  }
+  
+  .input-filtro-motivo {
+    margin-bottom: 20px;
+  }
+  
+  .chips-container {
+    gap: 6px;
+  }
+  
+  .chip {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  
+  .tabla-bajas th,
+  .tabla-bajas td {
+    padding: 8px 6px;
+    font-size: 13px;
+  }
+  
+  .descripcion-celda {
+    max-width: 120px;
+  }
+  
+  .btn-editar, .btn-eliminar {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .acciones-container {
+    gap: 3px;
+  }
+  
+  .no-registros {
+    padding: 30px 15px;
+    font-size: 14px;
+  }
+  
+  .no-registros svg {
+    font-size: 20px;
+  }
+  
+  .paginacion {
+    margin-top: 20px;
+  }
+  
+  .pagina {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 360px) {
+  .bajas-container {
+    padding: 10px;
+  }
+  
+  .bajas-container h1 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  
+  .bajas-container h1::after {
+    width: 50px;
+  }
+  
+  .bajas-container h2 {
+    font-size: 16px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+  }
+  
+  h3 {
+    font-size: 14px;
+  }
+  
+  .input-busqueda-container input {
+    padding: 8px 10px 8px 35px;
+    font-size: 13px;
+  }
+  
+  .icono-busqueda {
+    left: 10px;
+  }
+  
+  .estadisticas-container {
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .estadistica-card {
+    padding: 10px;
+  }
+  
+  .estadistica-card h3 {
+    font-size: 13px;
+  }
+  
+  .estadistica-card .valor {
+    font-size: 18px;
+  }
+  
+  .productos-mas-bajas {
+    padding: 10px;
+  }
+  
+  .productos-mas-bajas h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .productos-mas-bajas th,
+  .productos-mas-bajas td {
+    padding: 6px 4px;
+    font-size: 12px;
+  }
+  
+  .form-baja-container {
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .form-baja-container form {
+    gap: 12px;
+  }
+  
+  .form-group {
+    margin-bottom: 12px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 8px;
+    font-size: 13px;
+  }
+  
+  .form-group textarea {
+    min-height: 80px;
+  }
+  
+  .btn-registrar {
+    padding: 10px 16px;
+    font-size: 13px;
+    max-width: 200px;
+  }
+  
+  .btn-exportar, .btn-estadisticas {
+    padding: 6px 12px;
+    font-size: 13px;
+    gap: 6px;
+  }
+  
+  .input-filtro-motivo {
+    margin-bottom: 15px;
+  }
+  
+  .chips-container {
+    gap: 4px;
+  }
+  
+  .chip {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+  
+  .tabla-bajas th,
+  .tabla-bajas td {
+    padding: 6px 4px;
+    font-size: 12px;
+  }
+  
+  .descripcion-celda {
+    max-width: 100px;
+  }
+  
+  .btn-editar, .btn-eliminar {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .acciones-container {
+    gap: 2px;
+  }
+  
+  .no-registros {
+    padding: 20px 10px;
+    font-size: 13px;
+  }
+  
+  .no-registros svg {
+    font-size: 18px;
+  }
+  
+  .paginacion {
+    margin-top: 15px;
+  }
+  
+  .pagina {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}
+
+/* Ajustes específicos para pantallas táctiles */
+@media (hover: none) and (pointer: coarse) {
+  .estadistica-card:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  
+  .btn-exportar:hover, .btn-estadisticas:hover {
+    transform: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-registrar:hover {
+    transform: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chip:hover {
+    transform: none;
+    background-color: #f5f5f5;
+  }
+  
+  .btn-editar:hover, .btn-eliminar:hover {
+    transform: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pagina:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .descripcion-celda:hover {
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: inherit;
+    box-shadow: none;
+    padding: inherit;
+  }
+  
+  /* Efectos de presión para mejor feedback táctil */
+  .btn-exportar:active, .btn-estadisticas:active {
+    transform: scale(0.98);
+    background-color: #388e3c;
+  }
+  
+  .btn-registrar:active {
+    transform: scale(0.98);
+    background-color: #f57c00;
+  }
+  
+  .chip:active {
+    transform: scale(0.95);
+  }
+  
+  .btn-editar:active {
+    transform: scale(0.95);
+    background-color: #388e3c;
+  }
+  
+  .btn-eliminar:active {
+    transform: scale(0.95);
+    background-color: #e53935;
+  }
+  
+  .pagina:active {
+    transform: scale(0.95);
   }
 }

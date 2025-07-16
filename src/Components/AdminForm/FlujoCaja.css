@@ -345,86 +345,178 @@
   .chart-container canvas {
     height: 350px !important;
   }
+  
+  .filter-fields {
+    gap: 1.8rem;
+  }
+  
+  .date-filter input, .tipo-venta-select select {
+    width: 180px;
+  }
 }
 
 @media (max-width: 768px) {
   .fluxo-caja-container {
-    width: 95%;
-    padding: 1.5rem;
+    width: 96%;
+    padding: 1.8rem;
     margin: 40px auto 30px;
   }
   
   .fluxo-caja-container h2 {
     font-size: 2rem;
+    margin-bottom: 2rem;
   }
   
   .date-filter {
-    padding: 1.8rem 1.2rem;
+    padding: 1.8rem 1.5rem;
+    margin: 2rem 0;
   }
   
   .filter-fields {
+    flex-direction: column;
     gap: 1.5rem;
+    align-items: stretch;
   }
   
   .date-input-group, .tipo-venta-select {
     width: 100%;
+    align-items: center;
   }
   
   .date-filter input, .tipo-venta-select select {
     width: 100%;
+    max-width: 320px;
+    min-height: 48px; /* Mejor para tocar en móvil */
   }
   
   .filter-buttons {
-    flex-direction: column;
-    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
   }
   
   .filter-button, .clear-button {
-    width: 100%;
-    justify-content: center;
+    flex: 1;
+    max-width: 150px;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
   }
   
   .export-buttons {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 2rem 0;
   }
   
   .export-button {
-    width: 100%;
-    justify-content: center;
+    flex: 1;
+    max-width: 150px;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
   }
   
   .chart-container {
-    padding: 1.5rem;
+    padding: 1.8rem;
+    margin-bottom: 2.5rem;
   }
   
   .chart-container canvas {
-    height: 320px !important;
+    height: 300px !important;
   }
   
   .chart-container h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Desactivar hover effects en tablets */
+  .date-filter:hover {
+    transform: none;
+  }
+  
+  .chart-container:hover {
+    transform: none;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   .fluxo-caja-container {
     width: 98%;
-    padding: 1.2rem;
+    padding: 1.5rem;
     margin: 30px auto 20px;
+    border-radius: 12px;
   }
   
   .fluxo-caja-container h2 {
     font-size: 1.8rem;
+    margin-bottom: 1.8rem;
+  }
+  
+  .fluxo-caja-container h2::after {
+    width: 80px;
+    height: 3px;
   }
   
   .date-filter {
     padding: 1.5rem 1rem;
+    margin: 1.5rem 0;
+    border-radius: 12px;
+  }
+  
+  .filter-fields {
+    gap: 1.2rem;
+  }
+  
+  .date-filter label {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  
+  .date-filter input, .tipo-venta-select select {
+    padding: 0.9rem 1rem;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    min-height: 50px; /* Más fácil de tocar */
+  }
+  
+  .filter-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
+  
+  .filter-button, .clear-button {
+    width: 100%;
+    max-width: none;
+    padding: 1rem;
+    font-size: 0.9rem;
+    min-height: 50px;
+  }
+  
+  .export-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 1.8rem 0;
+  }
+  
+  .export-button {
+    width: 100%;
+    max-width: none;
+    padding: 1rem;
+    font-size: 0.9rem;
+    min-height: 50px;
   }
   
   .chart-container {
-    padding: 1.2rem;
+    padding: 1.5rem;
     margin-bottom: 2rem;
+    border-radius: 12px;
+  }
+  
+  .chart-container h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
   }
   
   .chart-container canvas {
@@ -432,11 +524,87 @@
   }
   
   .loading {
-    padding: 2.5rem;
+    padding: 2.5rem 1rem;
+    font-size: 1.1rem;
   }
   
   .spinner {
     width: 50px;
     height: 50px;
+  }
+  
+  .no-data-message {
+    padding: 2rem 1rem;
+    margin: 1.5rem 0;
+    border-radius: 10px;
+  }
+  
+  .no-data-message p {
+    font-size: 1rem;
+  }
+  
+  /* Desactivar todos los hover effects en móviles */
+  .date-input-group:hover, .tipo-venta-select:hover {
+    transform: none;
+  }
+  
+  .date-input-group:hover label, .tipo-venta-select:hover label {
+    color: #343a40;
+  }
+  
+  .filter-button:hover,
+  .clear-button:hover,
+  .export-button:hover {
+    transform: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chart-container h3::after {
+    width: 40px;
+    height: 2px;
+  }
+  
+  .chart-container:hover h3::after {
+    width: 40px;
+    background-color: #e9ecef;
+  }
+}
+
+@media (max-width: 400px) {
+  .fluxo-caja-container {
+    width: 100%;
+    margin: 20px auto 15px;
+    padding: 1.2rem;
+  }
+  
+  .fluxo-caja-container h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .date-filter {
+    padding: 1.2rem 0.8rem;
+    margin: 1.2rem 0;
+  }
+  
+  .chart-container {
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .chart-container canvas {
+    height: 250px !important;
+  }
+  
+  .chart-container h3 {
+    font-size: 1.2rem;
+  }
+  
+  .loading {
+    padding: 2rem 0.5rem;
+  }
+  
+  .no-data-message {
+    padding: 1.5rem 0.8rem;
   }
 }

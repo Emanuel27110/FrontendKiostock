@@ -1,4 +1,4 @@
-/* Bajas.css - Versión clara para vendedor (sin botones de administrador) */
+/* Bajas.css - Versión optimizada para móviles */
 .bajas-container {
     padding: 30px;
     max-width: 1200px;
@@ -6,10 +6,10 @@
     font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
     color: #333333;
     background-color: #ffffff;
-  }
-  
-  /* Headings */
-  .bajas-container h1 {
+}
+
+/* Headings */
+.bajas-container h1 {
     color: #333333;
     margin-bottom: 25px;
     text-align: center;
@@ -17,9 +17,9 @@
     font-weight: 600;
     position: relative;
     padding-bottom: 15px;
-  }
-  
-  .bajas-container h1::after {
+}
+
+.bajas-container h1::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -29,9 +29,9 @@
     height: 3px;
     background-color: #4caf50;
     border-radius: 3px;
-  }
-  
-  .bajas-container h2 {
+}
+
+.bajas-container h2 {
     color: #222222;
     margin-top: 35px;
     margin-bottom: 20px;
@@ -39,23 +39,23 @@
     padding-bottom: 12px;
     font-weight: 500;
     font-size: 22px;
-  }
-  
-  h3 {
+}
+
+h3 {
     color: #444444;
     margin-bottom: 15px;
     margin-top: 0;
     font-size: 18px;
     font-weight: 500;
-  }
-  
-  /* Search */
-  .input-busqueda-container {
+}
+
+/* Search */
+.input-busqueda-container {
     position: relative;
     margin-bottom: 25px;
-  }
-  
-  .input-busqueda-container input {
+}
+
+.input-busqueda-container input {
     width: 100%;
     padding: 12px 15px 12px 45px;
     border: 1px solid #dddddd;
@@ -65,37 +65,38 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     background-color: #ffffff;
     color: #333333;
-  }
-  
-  .input-busqueda-container input:focus {
+    box-sizing: border-box;
+}
+
+.input-busqueda-container input:focus {
     border-color: #4caf50;
     box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
     outline: none;
-  }
-  
-  .icono-busqueda {
+}
+
+.icono-busqueda {
     position: absolute;
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
     color: #757575;
     transition: color 0.3s ease;
-  }
-  
-  .input-busqueda-container input:focus + .icono-busqueda,
-  .input-busqueda-container:hover .icono-busqueda {
+}
+
+.input-busqueda-container input:focus + .icono-busqueda,
+.input-busqueda-container:hover .icono-busqueda {
     color: #4caf50;
-  }
-  
-  /* Action buttons - Solo para estadísticas (eliminado botón exportar) */
-  .botones-accion {
+}
+
+/* Action buttons */
+.botones-accion {
     display: flex;
     gap: 15px;
     margin-bottom: 25px;
     flex-wrap: wrap;
-  }
-  
-  .btn-estadisticas {
+}
+
+.btn-estadisticas {
     padding: 10px 18px;
     background-color: #4caf50;
     color: white;
@@ -108,35 +109,36 @@
     transition: all 0.3s;
     font-weight: 500;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .btn-estadisticas:hover {
+    touch-action: manipulation;
+}
+
+.btn-estadisticas:hover {
     background-color: #388e3c;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-  
-  .btn-estadisticas:active {
+}
+
+.btn-estadisticas:active {
     transform: translateY(0);
-  }
-  
-  /* Statistics */
-  .estadisticas-container {
+}
+
+/* Statistics */
+.estadisticas-container {
     background-color: #f9f9f9;
     border-radius: 12px;
     padding: 25px;
     margin-bottom: 35px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  }
-  
-  .estadisticas-cards {
+}
+
+.estadisticas-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     margin-bottom: 25px;
-  }
-  
-  .estadistica-card {
+}
+
+.estadistica-card {
     flex: 1;
     min-width: 220px;
     background-color: #ffffff;
@@ -145,97 +147,99 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     border-left: 5px solid #4caf50;
     transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .estadistica-card:hover {
+}
+
+.estadistica-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .estadistica-card.total {
+}
+
+.estadistica-card.total {
     border-left-color: #f44336;
-  }
-  
-  .estadistica-card h3 {
+}
+
+.estadistica-card h3 {
     margin-top: 0;
     font-size: 16px;
     color: #757575;
     font-weight: 500;
-  }
-  
-  .estadistica-card .valor {
+}
+
+.estadistica-card .valor {
     font-size: 28px;
     font-weight: 600;
     color: #333333;
     margin: 12px 0;
-  }
-  
-  .productos-mas-bajas {
+}
+
+.productos-mas-bajas {
     background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  }
-  
-  .productos-mas-bajas h3 {
+    overflow-x: auto;
+}
+
+.productos-mas-bajas h3 {
     margin-top: 0;
     font-size: 18px;
     color: #444444;
     margin-bottom: 18px;
     font-weight: 600;
-  }
-  
-  .productos-mas-bajas table {
+}
+
+.productos-mas-bajas table {
     width: 100%;
     border-collapse: collapse;
-  }
-  
-  .productos-mas-bajas th,
-  .productos-mas-bajas td {
+    min-width: 400px;
+}
+
+.productos-mas-bajas th,
+.productos-mas-bajas td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #eeeeee;
-  }
-  
-  .productos-mas-bajas th {
+}
+
+.productos-mas-bajas th {
     background-color: #f5f5f5;
     font-weight: 600;
     color: #555555;
-  }
-  
-  .productos-mas-bajas tr:hover {
+}
+
+.productos-mas-bajas tr:hover {
     background-color: #f5f5f5;
-  }
-  
-  /* Form */
-  .form-baja-container {
+}
+
+/* Form */
+.form-baja-container {
     background-color: #f9f9f9;
     border-radius: 12px;
     padding: 25px;
     margin-bottom: 35px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  }
-  
-  .form-baja-container form {
+}
+
+.form-baja-container form {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 25px;
-  }
-  
-  .form-group {
+}
+
+.form-group {
     margin-bottom: 20px;
-  }
-  
-  .form-group label {
+}
+
+.form-group label {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
     color: #555555;
-  }
-  
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #dddddd;
@@ -244,22 +248,23 @@
     transition: all 0.3s;
     background-color: #ffffff;
     color: #333333;
-  }
-  
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
     border-color: #4caf50;
     box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
     outline: none;
-  }
-  
-  .form-group textarea {
+}
+
+.form-group textarea {
     resize: vertical;
     min-height: 120px;
-  }
-  
-  .btn-registrar {
+}
+
+.btn-registrar {
     padding: 14px 25px;
     background-color: #ff9800;
     color: white;
@@ -273,37 +278,38 @@
     justify-self: center;
     transition: all 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .btn-registrar:hover {
+    touch-action: manipulation;
+}
+
+.btn-registrar:hover {
     background-color: #f57c00;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-  
-  .btn-registrar:active {
+}
+
+.btn-registrar:active {
     transform: translateY(0);
-  }
-  
-  /* Reason filter */
-  .input-filtro-motivo {
+}
+
+/* Reason filter */
+.input-filtro-motivo {
     margin-bottom: 25px;
-  }
-  
-  .input-filtro-motivo label {
+}
+
+.input-filtro-motivo label {
     display: block;
     margin-bottom: 12px;
     font-weight: 500;
     color: #555555;
-  }
-  
-  .chips-container {
+}
+
+.chips-container {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-  }
-  
-  .chip {
+}
+
+.chip {
     padding: 8px 16px;
     background-color: #f5f5f5;
     border-radius: 50px;
@@ -312,68 +318,70 @@
     transition: all 0.3s;
     border: 1px solid #dddddd;
     color: #555555;
-  }
-  
-  .chip:hover {
+    touch-action: manipulation;
+}
+
+.chip:hover {
     background-color: #eeeeee;
     transform: translateY(-2px);
     border-color: #4caf50;
-  }
-  
-  .chip.selected {
+}
+
+.chip.selected {
     background-color: #4caf50;
     color: white;
     border-color: transparent;
     font-weight: 500;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Withdrawals table - Sin botones de acción */
-  .tabla-bajas {
+}
+
+/* Withdrawals table */
+.tabla-bajas {
     overflow-x: auto;
     margin-bottom: 25px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  }
-  
-  .tabla-bajas table {
+}
+
+.tabla-bajas table {
     width: 100%;
     border-collapse: collapse;
-  }
-  
-  .tabla-bajas th,
-  .tabla-bajas td {
+    min-width: 700px;
+}
+
+.tabla-bajas th,
+.tabla-bajas td {
     padding: 14px 18px;
     text-align: left;
     border-bottom: 1px solid #eeeeee;
-  }
-  
-  .tabla-bajas th {
+}
+
+.tabla-bajas th {
     background-color: #f5f5f5;
     font-weight: 600;
     color: #555555;
     position: sticky;
     top: 0;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  }
-  
-  .tabla-bajas tr:hover {
+}
+
+.tabla-bajas tr:hover {
     background-color: #f5f5f5;
-  }
-  
-  .tabla-bajas tr:last-child td {
+}
+
+.tabla-bajas tr:last-child td {
     border-bottom: none;
-  }
-  
-  .descripcion-celda {
+}
+
+.descripcion-celda {
     max-width: 300px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  
-  .descripcion-celda:hover {
+}
+
+.descripcion-celda:hover {
     white-space: normal;
     overflow: visible;
     background-color: #ffffff;
@@ -383,14 +391,14 @@
     border-radius: 4px;
     padding: 10px;
     transition: all 0.3s;
-  }
-  
-  .valor-celda {
+}
+
+.valor-celda {
     font-weight: 600;
     color: #f44336;
-  }
-  
-  .no-registros {
+}
+
+.no-registros {
     text-align: center;
     padding: 40px;
     color: #757575;
@@ -398,23 +406,24 @@
     background-color: #f9f9f9;
     border-radius: 8px;
     margin: 20px 0;
-  }
-  
-  .no-registros svg {
+}
+
+.no-registros svg {
     margin-right: 10px;
     color: #f44336;
     font-size: 24px;
-  }
-  
-  /* Pagination */
-  .paginacion {
+}
+
+/* Pagination */
+.paginacion {
     display: flex;
     justify-content: center;
     gap: 6px;
     margin-top: 30px;
-  }
-  
-  .pagina {
+    flex-wrap: wrap;
+}
+
+.pagina {
     padding: 10px 16px;
     border: 1px solid #dddddd;
     background-color: #ffffff;
@@ -423,69 +432,367 @@
     border-radius: 6px;
     transition: all 0.3s;
     font-weight: 500;
-  }
-  
-  .pagina:hover {
+    touch-action: manipulation;
+    min-width: 44px;
+    text-align: center;
+}
+
+.pagina:hover {
     background-color: #f5f5f5;
     border-color: #4caf50;
     transform: translateY(-2px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .pagina.active {
+}
+
+.pagina.active {
     background-color: #4caf50;
     color: white;
     border-color: #4caf50;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Tooltip para botones */
-  [title] {
+}
+
+/* Tooltip para botones */
+[title] {
     position: relative;
-  }
-  
-  /* Animaciones */
-  @keyframes fadeIn {
+}
+
+/* Animaciones */
+@keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .estadisticas-container, .form-baja-container, .tabla-bajas {
+}
+
+.estadisticas-container, .form-baja-container, .tabla-bajas {
     animation: fadeIn 0.4s ease-out;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
+}
+
+/* ====== RESPONSIVE DESIGN - MEJORADO ====== */
+
+/* Tablets grandes */
+@media (max-width: 1024px) {
     .bajas-container {
-      padding: 15px;
-    }
-    
-    .form-baja-container form {
-      grid-template-columns: 1fr;
+        padding: 20px;
     }
     
     .estadisticas-cards {
-      flex-direction: column;
+        gap: 15px;
+    }
+    
+    .estadistica-card {
+        min-width: 180px;
+    }
+}
+
+/* Tablets pequeñas */
+@media (max-width: 768px) {
+    .bajas-container {
+        padding: 15px;
+    }
+    
+    .bajas-container h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .bajas-container h2 {
+        font-size: 20px;
+        margin-top: 25px;
+    }
+    
+    .form-baja-container form {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .estadisticas-container {
+        padding: 20px;
+    }
+    
+    .estadisticas-cards {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .estadistica-card {
+        min-width: unset;
     }
     
     .botones-accion {
-      flex-direction: column;
+        flex-direction: column;
+        gap: 10px;
     }
     
     .btn-estadisticas {
-      width: 100%;
+        width: 100%;
+        justify-content: center;
     }
     
     .tabla-bajas th,
     .tabla-bajas td {
-      padding: 10px;
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+    
+    .tabla-bajas table {
+        min-width: 600px;
     }
     
     .descripcion-celda {
-      max-width: 150px;
+        max-width: 120px;
+    }
+    
+    .productos-mas-bajas {
+        padding: 15px;
+    }
+    
+    .productos-mas-bajas table {
+        min-width: 350px;
+    }
+    
+    .chips-container {
+        gap: 8px;
+    }
+    
+    .chip {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+}
+
+/* Móviles grandes */
+@media (max-width: 480px) {
+    .bajas-container {
+        padding: 10px;
+    }
+    
+    .bajas-container h1 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .bajas-container h1::after {
+        width: 60px;
+    }
+    
+    .bajas-container h2 {
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+    
+    h3 {
+        font-size: 16px;
+    }
+    
+    .input-busqueda-container input {
+        padding: 10px 12px 10px 40px;
+        font-size: 16px; /* Evita zoom en iOS */
+    }
+    
+    .icono-busqueda {
+        left: 12px;
+    }
+    
+    .estadisticas-container {
+        padding: 15px;
+        margin-bottom: 25px;
+    }
+    
+    .estadistica-card {
+        padding: 15px;
+    }
+    
+    .estadistica-card .valor {
+        font-size: 24px;
+    }
+    
+    .form-baja-container {
+        padding: 15px;
+        margin-bottom: 25px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px;
+        font-size: 16px; /* Evita zoom en iOS */
+    }
+    
+    .btn-registrar {
+        padding: 12px 20px;
+        font-size: 16px;
+        max-width: 100%;
+    }
+    
+    .tabla-bajas {
+        border-radius: 8px;
+    }
+    
+    .tabla-bajas th,
+    .tabla-bajas td {
+        padding: 8px 6px;
+        font-size: 13px;
+    }
+    
+    .tabla-bajas table {
+        min-width: 500px;
+    }
+    
+    .descripcion-celda {
+        max-width: 80px;
+    }
+    
+    .valor-celda {
+        font-size: 13px;
+    }
+    
+    .productos-mas-bajas {
+        padding: 10px;
+    }
+    
+    .productos-mas-bajas table {
+        min-width: 300px;
+    }
+    
+    .productos-mas-bajas th,
+    .productos-mas-bajas td {
+        padding: 8px 6px;
+        font-size: 13px;
+    }
+    
+    .no-registros {
+        padding: 30px 15px;
+        font-size: 14px;
     }
     
     .paginacion {
-      flex-wrap: wrap;
+        gap: 4px;
+        margin-top: 20px;
     }
-  }
+    
+    .pagina {
+        padding: 8px 12px;
+        font-size: 14px;
+        min-width: 40px;
+    }
+    
+    .chips-container {
+        gap: 6px;
+    }
+    
+    .chip {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 320px) {
+    .bajas-container {
+        padding: 8px;
+    }
+    
+    .bajas-container h1 {
+        font-size: 20px;
+    }
+    
+    .bajas-container h2 {
+        font-size: 16px;
+    }
+    
+    .estadisticas-container {
+        padding: 12px;
+    }
+    
+    .estadistica-card {
+        padding: 12px;
+    }
+    
+    .estadistica-card .valor {
+        font-size: 20px;
+    }
+    
+    .form-baja-container {
+        padding: 12px;
+    }
+    
+    .tabla-bajas th,
+    .tabla-bajas td {
+        padding: 6px 4px;
+        font-size: 12px;
+    }
+    
+    .descripcion-celda {
+        max-width: 60px;
+    }
+    
+    .productos-mas-bajas {
+        padding: 8px;
+    }
+    
+    .productos-mas-bajas th,
+    .productos-mas-bajas td {
+        padding: 6px 4px;
+        font-size: 12px;
+    }
+    
+    .pagina {
+        padding: 6px 8px;
+        font-size: 12px;
+        min-width: 32px;
+    }
+}
+
+/* Mejoras específicas para dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+    .btn-estadisticas:hover,
+    .btn-registrar:hover,
+    .chip:hover,
+    .pagina:hover {
+        transform: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .estadistica-card:hover {
+        transform: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    
+    .descripcion-celda:hover {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        background-color: transparent;
+        position: static;
+        z-index: auto;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 14px 18px;
+    }
+}
+
+/* Orientación horizontal en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+    .estadisticas-cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .estadistica-card {
+        flex: 1;
+        min-width: 150px;
+    }
+    
+    .form-baja-container form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Accesibilidad mejorada */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

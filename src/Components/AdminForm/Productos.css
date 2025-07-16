@@ -1,4 +1,4 @@
-/* Productos.css - Versión mejorada */
+/* Productos.css - Versión mejorada y optimizada para móvil */
 
 .productos-container {
   padding: 2rem;
@@ -391,34 +391,231 @@ form {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Design */
+/* Responsive Design - MEJORADO PARA MÓVIL */
 @media (max-width: 768px) {
   .productos-container {
     padding: 1rem;
+    margin-top: 60px;
   }
   
-  .tabla-productos {
-    overflow-x: auto;
+  /* Headers más pequeños en móvil */
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
   }
   
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  /* Búsqueda más compacta */
+  .input-busqueda-container {
+    margin: 1.5rem auto;
+  }
+  
+  .input-busqueda-container input {
+    padding: 0.875rem 2.5rem 0.875rem 1rem;
+    font-size: 16px; /* Evita zoom en iOS */
+  }
+  
+  .icono-busqueda {
+    right: 1rem;
+  }
+  
+  /* Botones de exportar en columna */
   .botones-exportar {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+  
+  .btn-exportar {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Formulario más compacto */
+  form {
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 0.875rem;
+    font-size: 16px; /* Evita zoom en iOS */
+  }
+  
+  /* Tabla responsiva mejorada */
+  .tabla-productos {
+    margin: 1.5rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .tabla-productos table {
+    min-width: 600px; /* Asegura scroll horizontal */
+  }
+  
+  .tabla-productos th,
+  .tabla-productos td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .tabla-productos th:nth-child(2),
+  .tabla-productos td:nth-child(2) {
+    padding-left: 1rem;
+    min-width: 200px;
+  }
+  
+  /* Imágenes más pequeñas en móvil */
+  .tabla-productos td img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  /* Botones de acción más pequeños */
+  .btn-editar,
+  .btn-eliminar {
+    width: 35px;
+    height: 35px;
+    padding: 0.5rem;
+  }
+  
+  /* Filtro de categorías mejorado */
+  .input-filtro-categoria {
+    margin: 1.5rem 0;
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .input-filtro-categoria label {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
   }
   
   .chips-container {
     justify-content: flex-start;
+    gap: 0.5rem;
+    padding: 0.25rem;
+  }
+  
+  .chip {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.875rem;
+    border-radius: 16px;
+  }
+  
+  /* Paginación mejorada */
+  .paginacion {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 1.5rem 0;
+  }
+  
+  .pagina {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    min-width: 40px;
+  }
+  
+  /* Botón chatbot más pequeño */
+  .btn-chatbot {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 20px;
+    font-size: 0.875rem;
+  }
+}
+
+/* Optimizaciones para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .productos-container {
+    padding: 0.75rem;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  /* Tabla con scroll horizontal más visible */
+  .tabla-productos {
+    position: relative;
+  }
+  
+  .tabla-productos::after {
+    content: '←→ Desliza para ver más';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+    text-align: center;
     padding: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  
+  .tabla-productos th,
+  .tabla-productos td {
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .tabla-productos td img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .btn-editar,
+  .btn-eliminar {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .acciones-container {
+    gap: 4px;
+  }
+  
+  /* Chips más pequeños */
+  .chip {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  
+  /* Botón chatbot más compacto */
+  .btn-chatbot {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Mejoras para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .productos-container {
+    padding: 1.5rem;
+  }
+  
+  .tabla-productos th,
+  .tabla-productos td {
+    padding: 0.875rem 0.75rem;
+  }
+  
+  .tabla-productos td img {
+    width: 50px;
+    height: 50px;
   }
   
   .btn-editar,
   .btn-eliminar {
     width: 36px;
     height: 36px;
-  }
-  
-  .tabla-productos td img {
-    width: 48px;
-    height: 48px;
   }
 }

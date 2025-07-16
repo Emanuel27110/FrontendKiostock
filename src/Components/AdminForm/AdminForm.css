@@ -114,42 +114,6 @@
   cursor: pointer;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .admin-form-container {
-    padding: 2rem;
-    margin: 1rem;
-  }
-
-  .admin-title {
-    font-size: 1.75rem;
-  }
-
-  .admin-container {
-    padding-top: 60px;
-  }
-
-  .admin-wrapper {
-    padding: 1rem;
-  }
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.admin-form-container {
-  animation: fadeIn 0.5s ease-out;
-}
-
 /* Actualizar el admin-wrapper para el nuevo layout */
 .admin-wrapper {
   padding: 2rem;
@@ -241,23 +205,6 @@
   color: white;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .admin-content {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .admin-wrapper {
-    padding: 1rem;
-  }
-
-  .users-table-container {
-    overflow-x: auto;
-  }
-}
-
 .no-users-message {
   text-align: center;
   color: #666;
@@ -273,4 +220,264 @@
   text-align: center;
   padding: 2rem;
   color: #666;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-form-container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* RESPONSIVE MEJORADO PARA MÓVILES */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .admin-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Móviles grandes */
+@media (max-width: 768px) {
+  .admin-container {
+    padding-top: 60px;
+  }
+
+  .admin-wrapper {
+    padding: 1rem;
+    min-height: calc(100vh - 120px);
+  }
+
+  .admin-form-container {
+    padding: 2rem;
+    margin: 0.5rem;
+    border-radius: 12px;
+  }
+
+  .admin-title {
+    font-size: 1.75rem;
+  }
+
+  .admin-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .users-list-container {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .users-title {
+    font-size: 1.25rem;
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .users-table-container {
+    margin: 0 -0.5rem;
+  }
+
+  .role-badge {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .action-button {
+    padding: 0.4rem;
+    margin: 0 0.1rem;
+  }
+}
+
+/* Móviles medianos */
+@media (max-width: 480px) {
+  .admin-container {
+    padding-top: 50px;
+  }
+
+  .admin-wrapper {
+    padding: 0.5rem;
+    min-height: calc(100vh - 100px);
+  }
+
+  .admin-form-container {
+    padding: 1.5rem;
+    margin: 0.25rem;
+    border-radius: 10px;
+  }
+
+  .admin-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .admin-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .admin-form {
+    gap: 1.25rem;
+  }
+
+  .admin-input-box input,
+  .admin-input-box select {
+    padding: 10px 35px 10px 12px;
+    font-size: 0.95rem;
+  }
+
+  .admin-icon {
+    right: 12px;
+    font-size: 1rem;
+  }
+
+  .admin-button {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .users-list-container {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .users-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.85rem;
+  }
+
+  .users-table-container {
+    margin: 0 -0.25rem;
+  }
+
+  .role-badge {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .action-button {
+    padding: 0.3rem;
+    margin: 0 0.05rem;
+    font-size: 0.8rem;
+  }
+
+  .no-users-message {
+    padding: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .loading {
+    padding: 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 360px) {
+  .admin-container {
+    padding-top: 40px;
+  }
+
+  .admin-wrapper {
+    padding: 0.25rem;
+    min-height: calc(100vh - 80px);
+  }
+
+  .admin-form-container {
+    padding: 1.25rem;
+    margin: 0.1rem;
+    border-radius: 8px;
+  }
+
+  .admin-title {
+    font-size: 1.35rem;
+  }
+
+  .admin-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .admin-input-box input,
+  .admin-input-box select {
+    padding: 8px 30px 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .admin-icon {
+    right: 10px;
+    font-size: 0.9rem;
+  }
+
+  .admin-button {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .users-list-container {
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+
+  .users-title {
+    font-size: 1rem;
+  }
+
+  .users-table th,
+  .users-table td {
+    padding: 0.4rem 0.2rem;
+    font-size: 0.8rem;
+  }
+
+  .role-badge {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.3rem;
+  }
+
+  .action-button {
+    padding: 0.25rem;
+    margin: 0;
+    font-size: 0.75rem;
+  }
+}
+
+/* Ajustes específicos para pantallas táctiles */
+@media (hover: none) and (pointer: coarse) {
+  .admin-button:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .action-button:hover {
+    background-color: initial;
+    color: initial;
+  }
+
+  .admin-button:active {
+    background-color: #2980b9;
+    transform: scale(0.98);
+  }
+
+  .action-button.delete:active {
+    background-color: #e53935;
+    color: white;
+  }
 }

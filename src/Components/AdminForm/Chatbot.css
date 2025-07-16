@@ -90,3 +90,115 @@
 .btn-consultar:hover {
   background-color: #0056b3;
 }
+
+/* ===== ESTILOS PARA MÓVIL ===== */
+@media (max-width: 768px) {
+  /* Ajustes para el botón de abrir */
+  .open-chatbot-btn {
+    bottom: 15px;
+    right: 15px;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+  
+  /* Ajustes para el chatbot */
+  .chatbot {
+    bottom: 10px;
+    right: 10px;
+    left: 10px; /* Añade margen izquierdo */
+    width: auto; /* Permite que use el ancho disponible */
+    height: 450px; /* Aumenta un poco la altura */
+    max-width: 350px; /* Máximo ancho */
+    margin: 0 auto; /* Centra si es necesario */
+  }
+  
+  .chatbot-header {
+    padding: 12px;
+    font-size: 1rem;
+  }
+  
+  .close-chatbot-btn {
+    font-size: 1.3rem;
+  }
+  
+  .chatbot-body {
+    padding: 15px;
+  }
+  
+  .chatbot-respuesta {
+    padding: 8px;
+    font-size: 0.9rem;
+    margin-top: 15px;
+  }
+  
+  .btn-consultar {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Para pantallas muy pequeñas (menos de 480px) */
+@media (max-width: 480px) {
+  /* Chatbot ocupa casi toda la pantalla en móviles pequeños */
+  .chatbot {
+    bottom: 5px;
+    right: 5px;
+    left: 5px;
+    width: auto;
+    height: 500px; /* Más altura en pantallas pequeñas */
+    border-radius: 8px; /* Bordes menos redondeados */
+  }
+  
+  .chatbot-header {
+    padding: 10px;
+    font-size: 0.9rem;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .close-chatbot-btn {
+    font-size: 1.2rem;
+  }
+  
+  .chatbot-body {
+    padding: 12px;
+  }
+  
+  .chatbot-respuesta {
+    padding: 6px;
+    font-size: 0.85rem;
+    margin-top: 12px;
+  }
+  
+  .btn-consultar {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    margin-top: 8px;
+  }
+  
+  /* Botón de abrir más pequeño */
+  .open-chatbot-btn {
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Para pantallas extra pequeñas (menos de 360px) */
+@media (max-width: 360px) {
+  .chatbot {
+    height: 450px; /* Reduce la altura en pantallas muy pequeñas */
+  }
+  
+  .chatbot-body {
+    padding: 10px;
+  }
+  
+  .chatbot-respuesta {
+    font-size: 0.8rem;
+  }
+  
+  .btn-consultar {
+    font-size: 0.8rem;
+  }
+}

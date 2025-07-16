@@ -106,3 +106,58 @@
 .carrito-contenido::-webkit-scrollbar-thumb:hover {
   background-color: #aaa;
 }
+
+/* ===== ESTILOS PARA MÓVIL ===== */
+@media (max-width: 768px) {
+  .carrito-contenido {
+    width: 90vw; /* 90% del ancho de la ventana */
+    max-width: 350px; /* Máximo 350px */
+    padding: 20px; /* Reduce el padding */
+    margin: 10px; /* Añade margen para no tocar los bordes */
+    max-height: 85vh; /* Aumenta un poco la altura máxima */
+  }
+  
+  .carrito-contenido h3 {
+    font-size: 1.3rem; /* Reduce ligeramente el tamaño del título */
+    margin-bottom: 20px;
+  }
+  
+  .carrito-contenido li {
+    padding: 8px; /* Reduce el padding de los items */
+    flex-direction: column; /* Cambia a columna en móvil si es necesario */
+    align-items: flex-start; /* Alinea a la izquierda */
+    gap: 5px; /* Espacio entre elementos */
+  }
+  
+  .carrito-contenido .btn-close {
+    padding: 10px 20px; /* Reduce el padding del botón */
+    font-size: 0.9rem; /* Reduce ligeramente el tamaño de fuente */
+  }
+  
+  .botones-container {
+    gap: 10px; /* Reduce el espacio entre botones */
+  }
+}
+
+/* Para pantallas muy pequeñas (menos de 480px) */
+@media (max-width: 480px) {
+  .carrito-contenido {
+    width: 95vw; /* 95% del ancho en pantallas muy pequeñas */
+    padding: 15px; /* Reduce aún más el padding */
+    max-height: 90vh; /* Maximiza el uso del espacio vertical */
+  }
+  
+  .carrito-contenido h3 {
+    font-size: 1.2rem; /* Tamaño más pequeño para el título */
+    margin-bottom: 15px;
+  }
+  
+  .carrito-contenido li {
+    padding: 6px; /* Padding mínimo */
+    margin-bottom: 10px; /* Reduce el margen entre items */
+  }
+  
+  .carrito-contenido ul li:last-child {
+    font-size: 1.1rem; /* Reduce el tamaño del total */
+  }
+}

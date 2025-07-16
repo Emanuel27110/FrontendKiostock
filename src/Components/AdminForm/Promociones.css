@@ -29,13 +29,21 @@
   --sombra-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --sombra-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   
-  /* Espaciado */
+  /* Espaciado responsive */
   --espaciado-xs: 0.25rem;
   --espaciado-sm: 0.5rem;
   --espaciado-md: 1rem;
   --espaciado-lg: 1.5rem;
   --espaciado-xl: 2rem;
   --espaciado-2xl: 3rem;
+  
+  /* Espaciado móvil */
+  --espaciado-mobile-xs: 0.125rem;
+  --espaciado-mobile-sm: 0.375rem;
+  --espaciado-mobile-md: 0.75rem;
+  --espaciado-mobile-lg: 1rem;
+  --espaciado-mobile-xl: 1.25rem;
+  --espaciado-mobile-2xl: 1.5rem;
   
   /* Bordes */
   --radio-sm: 0.375rem;
@@ -54,11 +62,31 @@
   --peso-medio: 500;
   --peso-semibold: 600;
   --peso-bold: 700;
+  
+  /* Tamaños de fuente responsive */
+  --text-xs: clamp(0.65rem, 2vw, 0.75rem);
+  --text-sm: clamp(0.75rem, 2.5vw, 0.875rem);
+  --text-base: clamp(0.875rem, 3vw, 1rem);
+  --text-lg: clamp(1rem, 3.5vw, 1.125rem);
+  --text-xl: clamp(1.125rem, 4vw, 1.25rem);
+  --text-2xl: clamp(1.25rem, 5vw, 1.5rem);
+  --text-3xl: clamp(1.5rem, 6vw, 1.875rem);
+  --text-4xl: clamp(1.875rem, 7vw, 2.25rem);
 }
 
 /* Reset y configuración base */
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--fuente-primaria);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* Contenedor principal */
@@ -76,44 +104,48 @@
   text-align: center;
   color: var(--texto-primario);
   margin-bottom: var(--espaciado-2xl);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: var(--text-4xl);
   font-weight: var(--peso-bold);
   background: linear-gradient(135deg, var(--color-primario), var(--color-info));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: 1.2;
 }
 
 .promociones-container h2 {
   color: var(--texto-primario);
   margin-bottom: var(--espaciado-lg);
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-size: var(--text-2xl);
   font-weight: var(--peso-semibold);
+  line-height: 1.3;
 }
 
-/* Botones de vista mejorados */
+/* Botones de vista mejorados para móvil */
 .vista-botones {
-  display: flex;
-  justify-content: center;
-  margin-bottom: var(--espaciado-2xl);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: var(--espaciado-sm);
-  flex-wrap: wrap;
+  margin-bottom: var(--espaciado-2xl);
+  padding: 0 var(--espaciado-sm);
 }
 
 .btn-vista {
-  padding: var(--espaciado-sm) var(--espaciado-lg);
+  padding: var(--espaciado-md) var(--espaciado-lg);
   border: 2px solid transparent;
   background-color: var(--bg-primario);
   color: var(--texto-secundario);
   cursor: pointer;
   border-radius: var(--radio-lg);
   font-weight: var(--peso-medio);
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   transition: all var(--transicion-normal);
   position: relative;
   overflow: hidden;
   min-width: 120px;
   text-align: center;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-vista::before {
@@ -127,7 +159,8 @@
   transition: left var(--transicion-lenta);
 }
 
-.btn-vista:hover {
+.btn-vista:hover,
+.btn-vista:active {
   background-color: var(--bg-hover);
   border-color: var(--color-primario);
   color: var(--color-primario);
@@ -144,7 +177,7 @@
   color: var(--texto-claro);
   border-color: var(--color-primario);
   box-shadow: var(--sombra-lg);
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 /* Card containers mejorados */
@@ -154,7 +187,7 @@
 .estadisticas-promociones {
   background: var(--bg-primario);
   border-radius: var(--radio-xl);
-  padding: var(--espaciado-2xl);
+  padding: var(--espaciado-xl);
   margin-bottom: var(--espaciado-xl);
   box-shadow: var(--sombra-lg);
   border: 1px solid rgba(148, 163, 184, 0.1);
@@ -175,7 +208,7 @@
   background: linear-gradient(90deg, var(--color-primario), var(--color-info), var(--color-exito));
 }
 
-/* Formulario mejorado */
+/* Formulario mejorado para móvil */
 .form-header {
   margin-bottom: var(--espaciado-xl);
   padding-bottom: var(--espaciado-lg);
@@ -185,7 +218,7 @@
 
 .form-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--espaciado-lg);
   margin-bottom: var(--espaciado-lg);
 }
@@ -199,7 +232,7 @@
   margin-bottom: var(--espaciado-sm);
   color: var(--texto-primario);
   font-weight: var(--peso-medio);
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -212,10 +245,12 @@
   border: 2px solid var(--bg-terciario);
   border-radius: var(--radio-md);
   background-color: var(--bg-primario);
-  font-size: 0.875rem;
+  font-size: var(--text-base);
   color: var(--texto-primario);
   transition: all var(--transicion-normal);
   font-family: inherit;
+  min-height: 48px; /* Mejora la experiencia táctil */
+  touch-action: manipulation;
 }
 
 .form-group input:focus,
@@ -234,30 +269,31 @@
   font-family: inherit;
 }
 
-/* Botones mejorados */
+/* Botones mejorados para móvil */
 .form-actions {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: var(--espaciado-2xl);
+  flex-direction: column;
   gap: var(--espaciado-md);
-  flex-wrap: wrap;
+  margin-top: var(--espaciado-2xl);
 }
 
 .btn-guardar,
 .btn-cancelar {
   border: none;
-  padding: var(--espaciado-md) var(--espaciado-xl);
+  padding: var(--espaciado-lg) var(--espaciado-xl);
   border-radius: var(--radio-md);
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: var(--text-base);
   font-weight: var(--peso-medio);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: all var(--transicion-normal);
   position: relative;
   overflow: hidden;
-  min-width: 140px;
+  min-height: 56px;
+  width: 100%;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-guardar {
@@ -266,7 +302,8 @@
   box-shadow: var(--sombra-md);
 }
 
-.btn-guardar:hover {
+.btn-guardar:hover,
+.btn-guardar:active {
   background: linear-gradient(135deg, var(--color-exito-hover), #047857);
   transform: translateY(-2px);
   box-shadow: var(--sombra-xl);
@@ -278,13 +315,14 @@
   box-shadow: var(--sombra-md);
 }
 
-.btn-cancelar:hover {
+.btn-cancelar:hover,
+.btn-cancelar:active {
   background: linear-gradient(135deg, var(--color-peligro-hover), #b91c1c);
   transform: translateY(-2px);
   box-shadow: var(--sombra-xl);
 }
 
-/* Búsqueda mejorada */
+/* Búsqueda mejorada para móvil */
 .input-busqueda-container {
   position: relative;
   margin-bottom: var(--espaciado-xl);
@@ -292,12 +330,14 @@
 
 .input-busqueda-container input {
   width: 100%;
-  padding: var(--espaciado-md) var(--espaciado-2xl) var(--espaciado-md) var(--espaciado-lg);
+  padding: var(--espaciado-lg) var(--espaciado-2xl) var(--espaciado-lg) var(--espaciado-lg);
   border: 2px solid var(--bg-terciario);
   border-radius: var(--radio-xl);
-  font-size: 0.875rem;
+  font-size: var(--text-base);
   background: var(--bg-secundario);
   transition: all var(--transicion-normal);
+  min-height: 56px;
+  touch-action: manipulation;
 }
 
 .input-busqueda-container input:focus {
@@ -315,45 +355,49 @@
   color: var(--texto-terciario);
   transition: color var(--transicion-normal);
   pointer-events: none;
+  font-size: var(--text-lg);
 }
 
 .input-busqueda-container:focus-within .icono-busqueda {
   color: var(--color-primario);
 }
 
-/* Tabla mejorada */
+/* Tabla mejorada para móvil */
 .tabla-promociones {
   overflow-x: auto;
   margin-bottom: var(--espaciado-xl);
   border-radius: var(--radio-lg);
   border: 1px solid var(--bg-terciario);
+  -webkit-overflow-scrolling: touch;
 }
 
 .tabla-promociones table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 700px; /* Mantiene el ancho mínimo para scroll horizontal */
 }
 
 .tabla-promociones th {
   background: linear-gradient(135deg, var(--bg-terciario), var(--bg-secundario));
-  padding: var(--espaciado-lg);
+  padding: var(--espaciado-md);
   text-align: left;
   font-weight: var(--peso-semibold);
   color: var(--texto-primario);
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   border-bottom: 2px solid var(--color-primario);
   position: sticky;
   top: 0;
   z-index: 10;
+  white-space: nowrap;
 }
 
 .tabla-promociones td {
-  padding: var(--espaciado-lg);
+  padding: var(--espaciado-md);
   border-bottom: 1px solid var(--bg-terciario);
   color: var(--texto-secundario);
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   vertical-align: middle;
 }
 
@@ -363,7 +407,6 @@
 
 .tabla-promociones tr:hover {
   background-color: var(--bg-hover);
-  transform: scale(1.005);
 }
 
 .promocion-inactiva {
@@ -391,11 +434,12 @@
   align-items: center;
   padding: var(--espaciado-xs) var(--espaciado-sm);
   border-radius: var(--radio-xl);
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   font-weight: var(--peso-semibold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   position: relative;
+  white-space: nowrap;
 }
 
 .estado-promo::before {
@@ -404,6 +448,7 @@
   height: 6px;
   border-radius: 50%;
   margin-right: var(--espaciado-xs);
+  flex-shrink: 0;
 }
 
 .estado-promo.activa {
@@ -426,11 +471,12 @@
   background-color: var(--color-peligro);
 }
 
-/* Acciones mejoradas */
+/* Acciones mejoradas para móvil */
 .acciones-container {
   display: flex;
-  gap: var(--espaciado-xs);
+  gap: var(--espaciado-sm);
   align-items: center;
+  justify-content: center;
 }
 
 .btn-editar,
@@ -445,41 +491,46 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  min-width: 44px;
+  min-height: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-editar {
   color: var(--color-info);
 }
 
-.btn-editar:hover {
+.btn-editar:hover,
+.btn-editar:active {
   color: var(--color-primario);
   background-color: rgba(6, 182, 212, 0.1);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .btn-eliminar {
   color: var(--color-peligro);
 }
 
-.btn-eliminar:hover {
+.btn-eliminar:hover,
+.btn-eliminar:active {
   color: var(--color-peligro-hover);
   background-color: rgba(239, 68, 68, 0.1);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .btn-finalizar {
   color: var(--color-exito);
 }
 
-.btn-finalizar:hover {
+.btn-finalizar:hover,
+.btn-finalizar:active {
   color: var(--color-exito-hover);
   background-color: rgba(16, 185, 129, 0.1);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
-/* Paginación mejorada */
+/* Paginación mejorada para móvil */
 .paginacion {
   display: flex;
   justify-content: center;
@@ -487,6 +538,7 @@
   margin-top: var(--espaciado-xl);
   gap: var(--espaciado-xs);
   flex-wrap: wrap;
+  padding: var(--espaciado-sm);
 }
 
 .pagina {
@@ -497,14 +549,18 @@
   border-radius: var(--radio-md);
   transition: all var(--transicion-normal);
   font-weight: var(--peso-medio);
-  min-width: 40px;
-  height: 40px;
+  min-width: 44px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: var(--text-sm);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.pagina:hover {
+.pagina:hover,
+.pagina:active {
   background-color: var(--bg-hover);
   border-color: var(--color-primario);
   transform: translateY(-2px);
@@ -518,27 +574,30 @@
   box-shadow: var(--sombra-md);
 }
 
-/* Calendario mejorado */
+/* Calendario mejorado para móvil */
 .react-calendar {
   width: 100% !important;
-  max-width: 900px;
+  max-width: 100%;
   margin: 0 auto;
   border: none !important;
   box-shadow: var(--sombra-lg);
   border-radius: var(--radio-xl) !important;
   padding: var(--espaciado-lg);
   background: var(--bg-primario);
+  font-size: var(--text-sm);
 }
 
 .react-calendar__tile {
-  height: 100px !important;
+  height: 80px !important;
   position: relative;
-  padding-top: var(--espaciado-xl) !important;
+  padding-top: var(--espaciado-lg) !important;
   border-radius: var(--radio-sm) !important;
   transition: all var(--transicion-normal);
+  touch-action: manipulation;
 }
 
-.react-calendar__tile:hover {
+.react-calendar__tile:hover,
+.react-calendar__tile:active {
   background-color: var(--bg-hover) !important;
   transform: scale(1.02);
 }
@@ -548,7 +607,7 @@
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: var(--espaciado-lg);
+  top: var(--espaciado-sm);
   left: 0;
   right: 0;
 }
@@ -558,14 +617,16 @@
   gap: var(--espaciado-xs);
   justify-content: center;
   flex-wrap: wrap;
+  max-width: 100%;
 }
 
 .promo-dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   background: linear-gradient(135deg, var(--color-primario), var(--color-info));
   border-radius: 50%;
   animation: pulse 2s infinite;
+  flex-shrink: 0;
 }
 
 @keyframes pulse {
@@ -574,7 +635,7 @@
 }
 
 .more-promos {
-  font-size: 0.625rem;
+  font-size: var(--text-xs);
   color: var(--texto-terciario);
   margin-top: var(--espaciado-xs);
   font-weight: var(--peso-medio);
@@ -585,8 +646,9 @@
   display: flex;
   justify-content: center;
   margin-top: var(--espaciado-xl);
-  gap: var(--espaciado-lg);
+  gap: var(--espaciado-md);
   flex-wrap: wrap;
+  padding: var(--espaciado-sm);
 }
 
 .leyenda-item {
@@ -596,6 +658,8 @@
   background: var(--bg-secundario);
   border-radius: var(--radio-lg);
   box-shadow: var(--sombra-sm);
+  min-width: 0;
+  flex-shrink: 0;
 }
 
 .leyenda-item .promo-dot {
@@ -604,21 +668,21 @@
 }
 
 .leyenda-item span {
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   color: var(--texto-secundario);
   font-weight: var(--peso-medio);
 }
 
-/* Estadísticas mejoradas */
+/* Estadísticas mejoradas para móvil */
 .graficos-container {
   display: grid;
-  gap: var(--espaciado-2xl);
+  gap: var(--espaciado-xl);
 }
 
 .grafico-promociones {
   background: linear-gradient(135deg, var(--bg-secundario), var(--bg-primario));
   border-radius: var(--radio-xl);
-  padding: var(--espaciado-xl);
+  padding: var(--espaciado-lg);
   box-shadow: var(--sombra-md);
   border: 1px solid rgba(148, 163, 184, 0.1);
 }
@@ -626,22 +690,22 @@
 .grafico-promociones h3 {
   margin-bottom: var(--espaciado-lg);
   color: var(--texto-primario);
-  font-size: 1.25rem;
+  font-size: var(--text-xl);
   font-weight: var(--peso-semibold);
 }
 
 /* Resumen de estadísticas */
 .resumen-promociones {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--espaciado-lg);
-  margin-top: var(--espaciado-2xl);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--espaciado-md);
+  margin-top: var(--espaciado-xl);
 }
 
 .tarjeta-estadistica {
   background: linear-gradient(135deg, var(--bg-primario), var(--bg-secundario));
   border-radius: var(--radio-xl);
-  padding: var(--espaciado-xl);
+  padding: var(--espaciado-lg);
   text-align: center;
   box-shadow: var(--sombra-lg);
   border: 1px solid rgba(148, 163, 184, 0.1);
@@ -667,8 +731,8 @@
 
 .tarjeta-estadistica h4 {
   color: var(--texto-terciario);
-  margin-bottom: var(--espaciado-md);
-  font-size: 0.875rem;
+  margin-bottom: var(--espaciado-sm);
+  font-size: var(--text-xs);
   font-weight: var(--peso-medio);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -676,7 +740,7 @@
 
 .tarjeta-estadistica p {
   color: var(--texto-primario);
-  font-size: 2rem;
+  font-size: var(--text-2xl);
   font-weight: var(--peso-bold);
   background: linear-gradient(135deg, var(--color-primario), var(--color-info));
   -webkit-background-clip: text;
@@ -684,74 +748,80 @@
   background-clip: text;
 }
 
-/* Top promociones mejorado */
+/* Top promociones mejorado para móvil */
 .top-promociones {
-  margin: var(--espaciado-2xl) 0;
+  margin: var(--espaciado-xl) 0;
 }
 
 .top-list {
   display: flex;
   flex-direction: column;
-  gap: var(--espaciado-md);
+  gap: var(--espaciado-sm);
 }
 
 .top-item {
   display: flex;
   align-items: center;
   background: linear-gradient(135deg, var(--bg-primario), var(--bg-secundario));
-  padding: var(--espaciado-lg);
-  border-radius: var(--radio-xl);
-  box-shadow: var(--sombra-md);
-  gap: var(--espaciado-lg);
+  padding: var(--espaciado-md);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-sm);
+  gap: var(--espaciado-md);
   transition: all var(--transicion-normal);
   border: 1px solid rgba(148, 163, 184, 0.1);
 }
 
 .top-item:hover {
-  transform: translateX(8px);
-  box-shadow: var(--sombra-lg);
+  transform: translateX(4px);
+  box-shadow: var(--sombra-md);
 }
 
 .posicion {
   background: linear-gradient(135deg, var(--color-primario), var(--color-info));
   color: var(--texto-claro);
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: var(--peso-bold);
-  font-size: 1.125rem;
+  font-size: var(--text-base);
   box-shadow: var(--sombra-md);
+  flex-shrink: 0;
 }
 
 .nombre {
   flex: 1;
   font-weight: var(--peso-medio);
   color: var(--texto-primario);
-  font-size: 1rem;
+  font-size: var(--text-sm);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ventas {
   color: var(--texto-terciario);
-  font-size: 0.875rem;
-  margin-right: var(--espaciado-lg);
+  font-size: var(--text-xs);
+  margin-right: var(--espaciado-sm);
+  white-space: nowrap;
 }
 
 .ingresos {
   font-weight: var(--peso-bold);
   color: var(--color-exito);
-  font-size: 1.125rem;
+  font-size: var(--text-base);
+  white-space: nowrap;
 }
 
 /* Estados de carga */
 .loading,
 .no-data {
   text-align: center;
-  padding: var(--espaciado-2xl);
+  padding: var(--espaciado-xl);
   color: var(--texto-terciario);
-  font-size: 1.125rem;
+  font-size: var(--text-lg);
 }
 
 .loading::after {
@@ -770,66 +840,296 @@
   to { transform: rotate(360deg); }
 }
 
-/* Tabla detallada */
+/* Tabla detallada mejorada para móvil */
 .tabla-promociones-detallada {
   margin-top: var(--espaciado-2xl);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-md);
+}
+
+.tabla-promociones-detallada table {
+  min-width: 600px;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .tabla-promociones-detallada table th:last-child,
 .tabla-promociones-detallada table td:last-child {
   text-align: center;
   font-weight: var(--peso-semibold);
+  position: sticky;
+  right: 0;
+  background: var(--bg-primario);
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.tabla-promociones-detallada table th {
+  background: linear-gradient(135deg, var(--bg-terciario), var(--bg-secundario));
+  padding: var(--espaciado-md);
+  white-space: nowrap;
+  font-size: var(--text-sm);
+  border-bottom: 2px solid var(--color-primario);
+}
+
+.tabla-promociones-detallada table td {
+  padding: var(--espaciado-md);
+  border-bottom: 1px solid var(--bg-terciario);
+  font-size: var(--text-sm);
+  vertical-align: middle;
 }
 
 /* Responsive design mejorado */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .promociones-container {
-    padding: var(--espaciado-md);
+    padding: var(--espaciado-lg);
   }
   
   .form-row {
     grid-template-columns: 1fr;
+    gap: var(--espaciado-md);
+  }
+  
+  .resumen-promociones {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--espaciado-sm);
+  }
+  
+  .vista-botones {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .promociones-container {
+    padding: var(--espaciado-mobile-lg);
+  }
+  
+  .promociones-container h1 {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--espaciado-mobile-2xl);
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: var(--espaciado-mobile-md);
   }
   
   .form-actions {
     flex-direction: column;
     align-items: stretch;
+    gap: var(--espaciado-mobile-md);
   }
   
   .btn-guardar,
   .btn-cancelar {
     width: 100%;
+    padding: var(--espaciado-mobile-lg) var(--espaciado-mobile-xl);
+    font-size: var(--text-base);
   }
   
   .resumen-promociones {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--espaciado-mobile-sm);
   }
   
   .vista-botones {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espaciado-mobile-sm);
   }
   
   .btn-vista {
-    width: 100%;
-    max-width: 200px;
-  }
-}
-
-@media (max-width: 480px) {
-  .tabla-promociones {
-    font-size: 0.75rem;
+    padding: var(--espaciado-mobile-md) var(--espaciado-mobile-lg);
+    font-size: var(--text-sm);
+    min-width: 100px;
   }
   
   .tabla-promociones th,
   .tabla-promociones td {
-    padding: var(--espaciado-sm);
+    padding: var(--espaciado-mobile-sm);
+    font-size: var(--text-xs);
+  }
+  
+  .acciones-container {
+    flex-direction: column;
+    gap: var(--espaciado-mobile-xs);
+  }
+  
+  .btn-editar,
+  .btn-eliminar,
+  .btn-finalizar {
+    min-width: 36px;
+    min-height: 36px;
+    padding: var(--espaciado-mobile-sm);
+  }
+  
+  .paginacion {
+    gap: var(--espaciado-mobile-xs);
+    padding: var(--espaciado-mobile-sm);
+  }
+  
+  .pagina {
+    min-width: 36px;
+    min-height: 36px;
+    padding: var(--espaciado-mobile-sm);
+  }
+  
+  .react-calendar {
+    padding: var(--espaciado-mobile-lg);
+  }
+  
+  .react-calendar__tile {
+    height: 60px !important;
+    padding-top: var(--espaciado-mobile-md) !important;
+  }
+  
+  .leyenda-calendario {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espaciado-mobile-sm);
+  }
+  
+  .top-item {
+    padding: var(--espaciado-mobile-md);
+    gap: var(--espaciado-mobile-sm);
+  }
+  
+  .posicion {
+    width: 28px;
+    height: 28px;
+    font-size: var(--text-sm);
+  }
+  
+  .nombre {
+    font-size: var(--text-sm);
+  }
+  
+  .ventas,
+  .ingresos {
+    font-size: var(--text-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .promociones-container {
+    padding: var(--espaciado-mobile-md);
+  }
+  
+  .promociones-container h1 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--espaciado-mobile-xl);
+  }
+  
+  .form-promocion,
+  .lista-promociones,
+  .calendario-promociones,
+  .estadisticas-promociones {
+    padding: var(--espaciado-mobile-lg);
+    margin-bottom: var(--espaciado-mobile-xl);
+  }
+  
+  .tabla-promociones {
+    font-size: var(--text-xs);
+  }
+  
+  .tabla-promociones th,
+  .tabla-promociones td {
+    padding: var(--espaciado-mobile-xs);
+  }
+  
+  .vista-botones {
+    grid-template-columns: 1fr;
+    gap: var(--espaciado-mobile-sm);
+  }
+  
+  .btn-vista {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .resumen-promociones {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .tarjeta-estadistica {
+    padding: var(--espaciado-mobile-md);
+  }
+  
+  .tarjeta-estadistica h4 {
+    font-size: var(--text-xs);
+  }
+  
+  .tarjeta-estadistica p {
+    font-size: var(--text-xl);
   }
   
   .top-item {
     flex-direction: column;
     text-align: center;
-    gap: var(--espaciado-md);
+    gap: var(--espaciado-mobile-md);
+  }
+  
+  .top-item .nombre {
+    order: 1;
+  }
+  
+  .top-item .posicion {
+    order: 2;
+  }
+  
+  .top-item .ventas,
+  .top-item .ingresos {
+    order: 3;
+  }
+  
+  .input-busqueda-container input {
+    padding: var(--espaciado-mobile-lg);
+    font-size: var(--text-base);
+  }
+  
+  .react-calendar__tile {
+    height: 50px !important;
+    padding-top: var(--espaciado-mobile-sm) !important;
+  }
+  
+  .dot-container {
+    gap: 2px;
+  }
+  
+  .promo-dot {
+    width: 4px;
+    height: 4px;
+  }
+  
+  .more-promos {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .promociones-container {
+    padding: var(--espaciado-mobile-sm);
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 16px; /* Evita zoom en iOS */
+  }
+  
+  .resumen-promociones {
+    grid-template-columns: 1fr;
+  }
+  
+  .paginacion {
+    flex-direction: column;
+    gap: var(--espaciado-mobile-sm);
+  }
+  
+  .tabla-promociones-detallada table {
+    min-width: 500px;
   }
 }
 
@@ -848,6 +1148,10 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .form-promocion,
@@ -879,4 +1183,36 @@
 .focus-visible:focus {
   outline: 2px solid var(--color-primario);
   outline-offset: 2px;
+}
+
+/* Mejoras específicas para dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+  .btn-vista:hover,
+  .btn-editar:hover,
+  .btn-eliminar:hover,
+  .btn-finalizar:hover,
+  .pagina:hover {
+    transform: none;
+  }
+  
+  .btn-vista:active,
+  .btn-editar:active,
+  .btn-eliminar:active,
+  .btn-finalizar:active,
+  .pagina:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Optimizaciones para rendimiento en móvil */
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+}
+
+input, select, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
